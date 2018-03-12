@@ -1,0 +1,132 @@
+<!--
+  Generated template for the MyaccountPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="header_class">
+
+  <ion-row class="header_row">
+    <ion-col col-2>
+      <ion-row class="full_height">
+        <ion-icon name="md-menu" menuToggle class="header_icon"></ion-icon>
+      </ion-row>
+    </ion-col>
+    <ion-col col-8>
+      <ion-row class="full_height">
+        <span class="header_span">
+          MY ACCOUNT
+        </span>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row class="first_row">
+    <ion-col col-1></ion-col>
+    <ion-col col-5>
+      <ion-row class="normal_margin">
+        <span class="amount_span">
+          Account Number
+        </span>
+      </ion-row>
+      <ion-row class="normal_margin">
+        <span class="dollar_amount_span">
+          40000560
+        </span>
+      </ion-row>
+    </ion-col>
+    <ion-col col-5>
+      <ion-row class="normal_margin">
+        <span class="amount_span">
+          Amount Owing
+        </span>
+      </ion-row>
+      <ion-row class="normal_margin">
+        <span class="dollar_amount_span">
+          $120.20
+        </span>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="first_row">
+    <ion-row class="normal_margin">
+      <span class="amount_span">
+        Due date
+      </span>
+    </ion-row>
+    <ion-row class="normal_margin">
+      <span class="dollar_amount_span">
+        12 March 2017
+      </span>
+    </ion-row>
+  </ion-row>
+
+  <ion-row class="download_pay">
+    <ion-col col-1>
+    </ion-col>
+    <ion-col col-5>
+      <ion-row class="button_row">
+        <button ion-button class="button_style1">
+          DOWNLOAD BILL
+        </button>
+      </ion-row>
+    </ion-col>
+    <ion-col col-5>
+      <ion-row class="button_row">
+        <button ion-button class="button_style2">
+          PAY NOW
+        </button>
+      </ion-row>
+    </ion-col>
+    <ion-col col-1>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="my_detail">
+    <ion-col col-1>
+    </ion-col>
+    <ion-col col-10>
+      <ion-row class="button_row">
+        <button ion-button class="button_style1" (click)="goto_billHistory()">
+          BILL HISTORY
+        </button>
+      </ion-row>
+    </ion-col>
+    <ion-col col-1>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="my_normal">
+    <ion-col col-1>
+    </ion-col>
+    <ion-col col-10>
+      <ion-row class="button_row">
+        <button ion-button class="button_style1" (click)="goto_transactionHistory()">
+          TRANSACTION HISTORY
+        </button>
+      </ion-row>
+    </ion-col>
+    <ion-col col-1>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="my_normal">
+    <ion-col col-1>
+    </ion-col>
+    <ion-col col-10>
+      <ion-row class="button_row">
+        <button ion-button class="button_style1" (click)="goto_paymentHistory()">
+          PAYMENT METHODS
+        </button>
+      </ion-row>
+    </ion-col>
+    <ion-col col-1>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
