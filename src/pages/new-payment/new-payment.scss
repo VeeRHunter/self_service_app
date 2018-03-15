@@ -1,6 +1,7 @@
 page-new-payment {
 
     .header_class{
+        background-color: white;
         box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.3);
     }
     .header_span{
@@ -40,7 +41,11 @@ page-new-payment {
         font-size: 1.6rem;
     }
     .payment_input{
-        border-bottom: 1px solid #ddd;
+        // border-bottom: 1px solid #ddd;
+        width: 100%;
+    }
+    .mat-form-field{
+        width: 100%;
     }
     .expire_select{
         max-width: 100%;

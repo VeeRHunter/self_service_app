@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BillHistoryPage } from '../bill-history/bill-history';
 import { TransactionHistoryPage } from '../transaction-history/transaction-history';
 import { PaymentMethodPage } from '../payment-method/payment-method';
+import { PayNowPage } from '../pay-now/pay-now';
 
 /**
  * Generated class for the MyaccountPage page.
@@ -32,6 +33,9 @@ export class MyaccountPage {
   }
   goto_paymentHistory() {
     this.navCtrl.push(PaymentMethodPage);
+  }
+  goto_payNow() {
+    this.navCtrl.push(PayNowPage);
   }
 
 }

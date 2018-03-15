@@ -26,7 +26,7 @@
 
 <ion-content padding class="myservice_content">
 
-  <ion-row class="main_row margin_top">
+  <ion-row class="main_row margin_top" *ngFor="let list of service_Data; let i = index">
     <ion-row class="type_number_date">
       <ion-col col-3 class="left_col">
         <ion-row class="full_height">
@@ -34,7 +34,7 @@
             Type
           </span>
           <span class="detail_span">
-            GSM
+            {{list.type}}
           </span>
         </ion-row>
       </ion-col>
@@ -44,7 +44,7 @@
             Number
           </span>
           <span class="detail_span">
-            0415528882
+            {{list.number}}
           </span>
         </ion-row>
       </ion-col>
@@ -54,7 +54,7 @@
             Due Date
           </span>
           <span class="detail_span">
-            12, March, 2017
+            {{list.date}}
           </span>
         </ion-row>
       </ion-col>
@@ -66,7 +66,7 @@
             Status
           </span>
           <span class="detail_span">
-            Open
+            {{list.status}}
           </span>
         </ion-row>
       </ion-col>
@@ -74,7 +74,7 @@
       </ion-col>
       <ion-col col-5 class="right_col">
         <ion-row class="full_height">
-          <button ion-button class="change_button">
+          <button ion-button class="mat-button change_button">
             CHANGE
           </button>
         </ion-row>
@@ -87,7 +87,7 @@
             Plan
           </span>
           <span class="detail_span">
-            Saver1
+            {{list.plan}}
           </span>
         </ion-row>
       </ion-col>
@@ -95,7 +95,7 @@
       </ion-col>
       <ion-col col-5 class="right_col">
         <ion-row class="full_height">
-          <button ion-button class="change_button">
+          <button ion-button class="mat-button change_button">
             CHANGE
           </button>
         </ion-row>
@@ -103,166 +103,24 @@
     </ion-row>
     <ion-row class="bottom_image_row">
       <img src="assets/imgs/device_back.png" class="service_back_style" />
-    </ion-row>
-  </ion-row>
-
-  <ion-row class="main_row margin_top">
-    <ion-row class="type_number_date">
-      <ion-col col-3 class="left_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            Type
-          </span>
-          <span class="detail_span">
-            GSM
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-4>
-        <ion-row class="full_height">
-          <span class="name_span">
-            Number
-          </span>
-          <span class="detail_span">
-            0415528882
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-5 class="right_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            Due Date
-          </span>
-          <span class="detail_span">
-            12, March, 2017
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="type_number_date">
-      <ion-col col-3>
-        <ion-row class="full_height">
-          <span class="name_span">
-            Status
-          </span>
-          <span class="detail_span">
-            Open
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-4>
-      </ion-col>
-      <ion-col col-5 class="right_col">
-        <ion-row class="full_height">
-          <button ion-button class="change_button">
-            CHANGE
-          </button>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="type_number_date">
-      <ion-col col-3>
-        <ion-row class="full_height">
-          <span class="name_span">
-            Plan
-          </span>
-          <span class="detail_span">
-            Saver1
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-4>
-      </ion-col>
-      <ion-col col-5 class="right_col">
-        <ion-row class="full_height">
-          <button ion-button class="change_button">
-            CHANGE
-          </button>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="bottom_image_row">
-      <img src="assets/imgs/device_back.png" class="service_back_style" />
-    </ion-row>
-  </ion-row>
-
-  <ion-row class="main_row margin_top">
-    <ion-row class="type_number_date">
-      <ion-col col-3 class="left_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            Type
-          </span>
-          <span class="detail_span">
-            GSM
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-4 class="center_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            Number
-          </span>
-          <span class="detail_span">
-            0415528882
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-5 class="right_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            Due Date
-          </span>
-          <span class="detail_span">
-            12, March, 2017
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="type_number_date">
-      <ion-col col-3>
-        <ion-row class="full_height">
-          <span class="name_span">
-            Status
-          </span>
-          <span class="detail_span">
-            Open
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-4>
-      </ion-col>
-      <ion-col col-5 class="right_col">
-        <ion-row class="full_height">
-          <button ion-button class="change_button">
-            CHANGE
-          </button>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="type_number_date">
-      <ion-col col-3>
-        <ion-row class="full_height">
-          <span class="name_span">
-            Plan
-          </span>
-          <span class="detail_span">
-            Saver1
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-4>
-      </ion-col>
-      <ion-col col-5 class="right_col">
-        <ion-row class="full_height">
-          <button ion-button class="change_button">
-            CHANGE
-          </button>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="bottom_image_row">
-      <img src="assets/imgs/device_back.png" class="service_back_style" />
+      <ion-row class="image_button_row">
+        <ion-col col-3>
+          <ion-row class="full_height" (click)="goto_callHistory()" >
+          </ion-row>
+        </ion-col>
+        <ion-col col-3>
+          <ion-row class="full_height" (click)="goto_topupHistory()">
+          </ion-row>
+        </ion-col>
+        <ion-col col-3>
+          <ion-row class="full_height" (click)="goto_serviceDetail()">
+          </ion-row>
+        </ion-col>
+        <ion-col col-3>
+          <ion-row class="full_height" (click)="goto_serviceBundle()">
+          </ion-row>
+        </ion-col>
+      </ion-row>
     </ion-row>
   </ion-row>
 

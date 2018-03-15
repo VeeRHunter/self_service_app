@@ -1,6 +1,7 @@
 page-my-devices {
 
     .header_class{
+        background-color: white;
         box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.3);
     }
     .header_row{
@@ -27,12 +28,16 @@ page-my-devices {
         border: 1px solid #ddd;
         border-radius: 5px;
         padding: 2px;
+        background-color: white;
     }
     .left_col{
         text-align: left;
     }
     .right_col{
         text-align: right;
+    }
+    .center_col{
+        text-align: center
     }
     .name_span{
         width: 100%;
@@ -43,12 +48,10 @@ page-my-devices {
     .detail_span{
         width: 100%;
         font-size: 1.7rem;
-        // color: #3982a3;
         margin-top: 5px;
-        // font-weight: bold;
     }
     .change_button{
-        height: 30px;
+        height: 25px;
         color: white;
         font-weight: bold;
         background-color: #3c82a3;
@@ -56,10 +59,9 @@ page-my-devices {
         margin-bottom: auto;
         margin-left: auto;
         border-radius: 5px;
+        width: 80%;
     }
     .type_number_date{
-        // padding-left: 5px;
-        // padding-right: 5px;
         margin-top: 3px;
         margin-bottom: 3px;
     }
@@ -71,6 +73,24 @@ page-my-devices {
     .margin_top{
         margin-top: 5%;
         margin-bottom: 3%;
+    }
+    .image_button_row{
+        position: absolute;
+        height: 100%;
+    }
+    .image_button_row ion-col{
+        height: 100% !important;
+    }
+    .clear_button{
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+    }
+    .bottom_image_row{
+        position: relative;
     }
 
 }

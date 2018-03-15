@@ -27,91 +27,125 @@
 
 <ion-content padding>
 
-  <ion-row class="payment_row">
-    <span class="payment_title_span">
-      Payment Method
-    </span>
-  </ion-row>
+  <form #comProfileForm="ngForm" id="comProfileForm" (ngSubmit)="completeAddCompany(comProfileForm)" novalidate>
+    <ion-row class="payment_row">
+      <span class="payment_title_span">
+        Payment Method
+      </span>
+    </ion-row>
 
-  <ion-row class="payment_row">
-    <ion-col>
-      <ion-select [(ngModel)]="pay_Data.method" class="select_class">
-        <ion-option value="Select">
-          Select
-        </ion-option>
-        <ion-option value="Visa">
-          Visa
-        </ion-option>
-        <ion-option value="Paypal">
-          Paypal
-        </ion-option>
-      </ion-select>
-    </ion-col>
-  </ion-row>
+    <ion-row class="payment_row">
+      <ion-col>
+        <mat-select placeholder="Select" [formControl]="selType" [(ngModel)]="pay_Data.method" class="select_class" required>
+          <mat-option value="Visa">
+            Visa
+          </mat-option>
+          <mat-option value="Paypal">
+            Paypal
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="selType.hasError('required')">Please choose an type of payment</mat-error>
+      </ion-col>
+    </ion-row>
 
-  <ion-row class="payment_row">
-    <span class="payment_title_span">
-      Name
-    </span>
-  </ion-row>
+    <ion-row class="payment_row">
+      <span class="payment_title_span">
+        Name
+      </span>
+    </ion-row>
 
-  <ion-row class="payment_row">
-    <ion-input class="payment_input" [(ngModel)]="pay_Data.name" placeholder="Your name"></ion-input>
-  </ion-row>
+    <ion-row class="payment_row">
+      <mat-form-field class="example-full-width">
+        <input matInput class="payment_input" type="text" #title="ngModel" [(ngModel)]="pay_Data.name" required placeholder="Your name"
+          name="name" />
 
-  <ion-row class="payment_row">
-    <span class="payment_title_span">
-      Creadit Card Number
-    </span>
-  </ion-row>
+        <mat-error id="matLoginError2">
+          <span>Your name is required</span>
+        </mat-error>
 
-  <ion-row class="payment_row">
-    <ion-input class="payment_input" [(ngModel)]="pay_Data.cardnum" placeholder="16 Digit Credit Card Number"></ion-input>
-  </ion-row>
+      </mat-form-field>
+      <!-- <ion-input class="payment_input" [(ngModel)]="pay_Data.name" placeholder="Your name"></ion-input> -->
+    </ion-row>
 
-  <ion-row class="payment_row">
-    <span class="payment_title_span">
-      Expiry
-    </span>
-  </ion-row>
+    <ion-row class="payment_row">
+      <span class="payment_title_span">
+        Creadit Card Number
+      </span>
+    </ion-row>
 
-  <ion-row class="payment_row">
-    <ion-col col-2>
-      <ion-row class="full_height">
-        <ion-select [(ngModel)]="pay_Data.exm" class="expire_select">
+    <ion-row class="payment_row">
+      <mat-form-field class="example-full-width">
+        <input matInput class="payment_input" type="text" #title="ngModel" [(ngModel)]="pay_Data.cardnum" required placeholder="16 Digit Credit Card Number"
+          name="CardNumber" />
+
+        <mat-error id="matLoginError2">
+          <span>Creadit Card Number is required</span>
+        </mat-error>
+
+      </mat-form-field>
+
+      <!-- <ion-input class="payment_input" [(ngModel)]="pay_Data.cardnum" placeholder="16 Digit Credit Card Number"></ion-input> -->
+    </ion-row>
+
+    <ion-row class="payment_row">
+      <span class="payment_title_span">
+        Expiry
+      </span>
+    </ion-row>
+
+    <ion-row class="payment_row">
+      <ion-col col-4>
+        <ion-row class="full_height">
+          <mat-select placeholder="--" [formControl]="selExm" [(ngModel)]="pay_Data.exm" class="expire_select" required>
+            <mat-option *ngFor="let list of expireMonth" value="{{list}}">
+              {{list}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="selExm.hasError('required')">Please choose an type of payment</mat-error>
+
+          <!-- <ion-select [(ngModel)]="pay_Data.exm" class="expire_select">
           <ion-option value="none">--</ion-option>
           <ion-option *ngFor="let list of expireMonth" value="{{list}}">{{list}}</ion-option>
-        </ion-select>
-      </ion-row>
-    </ion-col>
-    <ion-col col-4>
-      <ion-row class="full_height">
-        <ion-select [(ngModel)]="pay_Data.exy" class="expire_select">
-          <ion-option *ngFor="let list of expireYear" value="{{list}}">{{list}}</ion-option>
-        </ion-select>
-      </ion-row>
-    </ion-col>
-  </ion-row>
+        </ion-select> -->
 
-  <ion-row class="add_cancel">
-    <ion-col col-1>
-    </ion-col>
-    <ion-col col-5>
-      <ion-row class="button_row">
-        <button ion-button class="button_style1">
-          ADD
-        </button>
-      </ion-row>
-    </ion-col>
-    <ion-col col-5>
-      <ion-row class="button_row">
-        <button ion-button class="button_style2">
-          CANCEL
-        </button>
-      </ion-row>
-    </ion-col>
-    <ion-col col-1>
-    </ion-col>
-  </ion-row>
+        </ion-row>
+      </ion-col>
+      <ion-col col-4>
+        <ion-row class="full_height">
+          <mat-select placeholder="Select" [formControl]="selExy" [(ngModel)]="pay_Data.exy" class="expire_select" required>
+            <mat-option *ngFor="let list of expireYear" value="{{list}}">
+              {{list}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="selExy.hasError('required')">Please choose an type of payment</mat-error>
+
+          <!-- <ion-select [(ngModel)]="pay_Data.exy" class="expire_select">
+          <ion-option *ngFor="let list of expireYear" value="{{list}}">{{list}}</ion-option>
+        </ion-select> -->
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="add_cancel">
+      <ion-col col-1>
+      </ion-col>
+      <ion-col col-5>
+        <ion-row class="button_row">
+          <button ion-button class="button_style1">
+            ADD
+          </button>
+        </ion-row>
+      </ion-col>
+      <ion-col col-5>
+        <ion-row class="button_row">
+          <button ion-button class="button_style2" (click)="goback()">
+            CANCEL
+          </button>
+        </ion-row>
+      </ion-col>
+      <ion-col col-1>
+      </ion-col>
+    </ion-row>
+  </form>
 
 </ion-content>

@@ -6,24 +6,39 @@
 -->
 
 
-<ion-content padding>
+<ion-content padding class="margin_content">
 
   <ion-row class="logo_row">
     <img src="assets/imgs/synergy_670.png" class="logo_class" />
   </ion-row>
+  <form #comProfileForm="ngForm" id="comProfileForm" (ngSubmit)="completeAddCompany(comProfileForm)" novalidate>
+    <ion-row class="username_row">
+      <mat-form-field class="example-full-width">
+        <input matInput type="text" placeholder="Username" [(ngModel)]="user_Data.username" required name="username">
+        <mat-error >
+          Email is required
+        </mat-error>
+      </mat-form-field>
+    </ion-row>
 
-  <ion-row class="username_row">
-    <ion-input type="text" placeholder="Username" class="input_class" [(ngModel)]="user_Data.username"></ion-input>
-  </ion-row>
+    <ion-row class="password_row">
+      <mat-form-field class="example-full-width">
+        <input matInput type="password" #title="ngModel" id="password" [(ngModel)]="user_Data.password" required placeholder="Password"
+          i18n-placeholder="@@password" name="password" />
 
-  <ion-row class="password_row">
-    <ion-input type="password" placeholder="Password" class="input_class" [(ngModel)]="user_Data.password"></ion-input>
-  </ion-row>
+        <mat-error id="matLoginError2">
+          <span>Password is required</span>
+        </mat-error>
 
-  <ion-row class="login_row">
-    <button ion-button class="button_class" (click)="goto_home()" >
-      Login
-    </button>
-  </ion-row>
+      </mat-form-field>
+    </ion-row>
+    <ion-row class="login_row">
+      <button mat-mini-fab class="button_class">
+        Login
+      </button>
+    </ion-row>
+  </form>
+
+
 
 </ion-content>

@@ -1,3 +1,50 @@
 page-settings {
 
+    .header_class{
+        background-color: white;
+        box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.3);
+    }
+    .header_row{
+        margin: auto;
+        height: 40px;
+    }
+    .header_span{
+        text-align: center;
+        margin: auto;
+        font-size: 1.8rem;
+        color: #3982a3;
+        font-weight: bold;
+    }
+    .header_icon{
+        margin: auto;
+        font-size: 2.5rem;
+    }
+
+    .setting_content{
+        background-color: #f3f3f3;
+    }
+
+    .main_row{
+        background-color: white;
+        border-bottom: 2px solid #ddd;
+        height: 50px;
+    }
+    .other_row{
+        background-color: white;
+        height: 50px;
+    }
+    .lock_image{
+        width: 20px;
+        height: 20px;
+        margin: auto;
+        opacity: 0.5;
+    }
+    .change_password{
+        margin-top: auto;
+        margin-bottom: auto;
+        font-size: 17px;
+        color: black;
+        opacity: 0.5;
+    }
+
 }

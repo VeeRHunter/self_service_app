@@ -25,6 +25,20 @@ import { TopUpPage } from '../pages/top-up/top-up';
 import { TopupHistoryPage } from '../pages/topup-history/topup-history';
 import { TransactionHistoryPage } from '../pages/transaction-history/transaction-history';
 
+
+////////api and other part.
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -51,7 +65,9 @@ import { TransactionHistoryPage } from '../pages/transaction-history/transaction
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    BrowserAnimationsModule,
+    MatInputModule, MatButtonModule, MatChipsModule, MatIconModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

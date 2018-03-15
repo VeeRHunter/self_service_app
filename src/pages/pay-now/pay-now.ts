@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {FormControl, Validators} from '@angular/forms';
 
 /**
  * Generated class for the PayNowPage page.
@@ -15,8 +16,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PayNowPage {
 
+  animalControl = new FormControl('', [Validators.required]);
 
-  public pay_Data = { "name": "", "method": "Select", "cardnum": "", "exm": "none", "exy": "2018" };
+  public pay_Data = { "name": "", "method": "", "cardnum": "", "exm": "none", "exy": "2018" };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

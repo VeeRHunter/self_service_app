@@ -4,15 +4,115 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header class="header_class">
 
-  <ion-navbar>
-    <ion-title>top-up</ion-title>
-  </ion-navbar>
+  <ion-row class="header_row">
+    <ion-col col-2>
+      <ion-row class="full_height">
+        <ion-icon name="ios-arrow-back" (click)="goback()" class="header_back_icon"></ion-icon>
+      </ion-row>
+    </ion-col>
+    <ion-col col-8>
+      <ion-row class="full_height">
+        <p class="header_span">
+          New TopUp
+        </p>
+        <p class="payment_id">[2132]</p>
+      </ion-row>
+    </ion-col>
+  </ion-row>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <form #comProfileForm="ngForm" id="comProfileForm" (ngSubmit)="completeAddCompany(comProfileForm)" novalidate>
+    <ion-row class="payment_row">
+      <span class="payment_title_span">
+        TopUp
+      </span>
+    </ion-row>
+
+    <ion-row class="payment_row">
+      <ion-col>
+        <mat-select placeholder="Select" [formControl]="selType" [(ngModel)]="top_Data.topup" class="select_class" required>
+          <mat-option value="Visa">
+            Visa
+          </mat-option>
+          <mat-option value="Paypal">
+            Paypal
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="selType.hasError('required')">Please choose an type of payment</mat-error>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="payment_row">
+      <span class="payment_title_span">
+        Start Date
+      </span>
+    </ion-row>
+
+    <ion-row class="payment_row">
+      <mat-form-field>
+        <input matInput [(ngModel)]="top_Data.start_date" [matDatepicker]="myDatepicker" [formControl]="changeDate">
+        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+
+        <mat-error *ngIf="changeDate.hasError('required')">
+          <span>Start Date is required</span>
+        </mat-error>
+
+      </mat-form-field>
+    </ion-row>
+
+    <ion-row class="payment_row">
+      <span class="payment_title_span">
+        Payment Method
+      </span>
+    </ion-row>
+
+    <ion-row class="payment_row">
+      <ion-col>
+        <mat-select placeholder="Debit Card" [formControl]="setMethod" [(ngModel)]="top_Data.method" class="select_class" required>
+          <mat-option value="Visa">
+            Visa
+          </mat-option>
+          <mat-option value="Paypal">
+            Paypal
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="setMethod.hasError('required')">Please choose an type of payment</mat-error>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="add_new_button">
+      <button ion-button class="button_style1 add_button" (click)="add_new()">
+        + Add New
+      </button>
+    </ion-row>
+
+    <ion-row class="add_cancel">
+      <ion-col col-1>
+      </ion-col>
+      <ion-col col-5>
+        <ion-row class="button_row">
+          <button ion-button class="button_style1">
+            CREATE
+          </button>
+        </ion-row>
+      </ion-col>
+      <ion-col col-5>
+        <ion-row class="button_row">
+          <button ion-button class="button_style2" (click)="goback()">
+            CANCEL
+          </button>
+        </ion-row>
+      </ion-col>
+      <ion-col col-1>
+      </ion-col>
+    </ion-row>
+  </form>
 
 </ion-content>

@@ -34,17 +34,15 @@
 
   <ion-row class="payment_row">
     <ion-col>
-      <ion-select [(ngModel)]="pay_Data.method" class="select_class">
-        <ion-option value="Select">
-          Select
-        </ion-option>
-        <ion-option value="Visa">
+      <mat-select placeholder="Select" [(ngModel)]="pay_Data.method" class="select_class" [formControl]="animalControl" required>
+        <mat-option value="Visa">
           Visa
-        </ion-option>
-        <ion-option value="Paypal">
+        </mat-option>
+        <mat-option value="Paypal">
           Paypal
-        </ion-option>
-      </ion-select>
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="animalControl.hasError('required')">Please choose an type of payment</mat-error>
     </ion-col>
   </ion-row>
 
@@ -65,7 +63,7 @@
     </ion-col>
     <ion-col col-5>
       <ion-row class="button_row">
-        <button ion-button class="button_style2">
+        <button ion-button class="button_style2" (click)="goback()">
           CANCEL
         </button>
       </ion-row>

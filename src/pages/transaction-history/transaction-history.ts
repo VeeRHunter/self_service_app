@@ -21,5 +21,8 @@ export class TransactionHistoryPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad TransactionHistoryPage');
   }
+  goback(){
+    this.navCtrl.pop();
+  }
 
 }

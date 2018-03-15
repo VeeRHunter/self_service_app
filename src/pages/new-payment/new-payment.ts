@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormControl, Validators } from '@angular/forms';
+import { PayNowPage } from '../pay-now/pay-now';
 
 /**
  * Generated class for the NewPaymentPage page.
@@ -15,9 +17,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NewPaymentPage {
 
-  public pay_Data = { "name": "", "method": "Select", "cardnum": "", "exm": "none", "exy": "2018" };
+  public pay_Data = { "name": "", "method": "", "cardnum": "", "exm": "1", "exy": "2018" };
   public expireMonth: any[];
   public expireYear: any[];
+
+  selType = new FormControl('', [Validators.required]);
+
+  selExm = new FormControl('', [Validators.required]);
+
+  selExy = new FormControl('', [Validators.required]);
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -34,8 +42,14 @@ export class NewPaymentPage {
       this.expireYear.push(i);
     }
   }
-  goback(){
+  goback() {
     this.navCtrl.pop();
+  }
+
+  completeAddCompany(comProfileForm) {
+    if (comProfileForm.valid && this.selType.valid && this.selExm.valid) {
+      this.navCtrl.push(PayNowPage);
+    }
   }
 
 }

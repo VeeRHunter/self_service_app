@@ -33,6 +33,18 @@ page-signin {
         border-radius: 25px;
         background-color: #3a83a4;
         font-weight: bold;
+        color: white;
+        height: 45px;
+        font-size: 20px;
+    }
+    .example-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+    }
+      
+    .example-full-width {
+    width: 100%;
     }
 
 }

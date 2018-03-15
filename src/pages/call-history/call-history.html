@@ -4,15 +4,148 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header class="header_class">
 
-  <ion-navbar>
-    <ion-title>call-history</ion-title>
-  </ion-navbar>
+  <ion-row class="header_row">
+    <ion-col col-2>
+      <ion-row class="full_height">
+        <ion-icon name="ios-arrow-back" (click)="goback()" class="header_back_icon"></ion-icon>
+      </ion-row>
+    </ion-col>
+    <ion-col col-8>
+      <ion-row class="full_height">
+        <span class="header_span">
+          Call History
+        </span>
+      </ion-row>
+    </ion-col>
+  </ion-row>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="bill_content">
+
+  <ion-row class="main_row" *ngFor="let list of call_historyData; let i = index" [ngClass]="{'main_row':i == 0, 'other_row': i != 0}">
+    <ion-row class="first_row">
+      <ion-col col-4 class="left_col">
+        <ion-row class="full_height">
+          <span class="name_span">
+            Number Called
+          </span>
+          <span class="detail_span">
+            {{list.call_num}}
+          </span>
+        </ion-row>
+      </ion-col>
+
+      <ion-col col-8 class="right_col">
+        <ion-row class="full_height">
+          <span class="name_span">
+            Date
+          </span>
+          <span class="receipt_span right_col">
+            {{list.date}}
+          </span>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="bill_second_row">
+      <ion-col col-4 class="left_col">
+        <ion-row class="full_height">
+          <span class="name_span">
+            Duration
+          </span>
+          <span class="detail_span">
+            {{list.duration}}
+          </span>
+        </ion-row>
+      </ion-col>
+      <ion-col col-4>
+        <ion-row class="full_height">
+          <span class="name_span center_text">
+            Tariff
+          </span>
+          <span class="detail_span center_text">
+            {{list.tariff}}
+          </span>
+        </ion-row>
+      </ion-col>
+
+      <ion-col col-4 class="right_col">
+        <ion-row class="full_height">
+          <span class="name_span">
+            Cost
+          </span>
+          <span class="detail_span">
+            ${{list.cost}}
+          </span>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+  </ion-row>
+
+  <ion-row class="other_row">
+    <ion-row class="first_row">
+      <ion-col col-4 class="left_col">
+        <ion-row class="full_height">
+          <span class="name_span">
+            Number Called
+          </span>
+          <span class="detail_span">
+            04155188882
+          </span>
+        </ion-row>
+      </ion-col>
+
+      <ion-col col-8 class="right_col">
+        <ion-row class="full_height">
+          <span class="name_span">
+            Date
+          </span>
+          <span class="receipt_span right_col">
+            12, March, 2017 10:15 am
+          </span>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="bill_second_row">
+      <ion-col col-4 class="left_col">
+        <ion-row class="full_height">
+          <span class="name_span">
+            Duration
+          </span>
+          <span class="detail_span">
+            15 seconds
+          </span>
+        </ion-row>
+      </ion-col>
+      <ion-col col-4>
+        <ion-row class="full_height">
+          <span class="name_span center_text">
+            Tariff
+          </span>
+          <span class="detail_span center_text">
+            Plan Z
+          </span>
+        </ion-row>
+      </ion-col>
+
+      <ion-col col-4 class="right_col">
+        <ion-row class="full_height">
+          <span class="name_span">
+            Cost
+          </span>
+          <span class="detail_span">
+            $0.15
+          </span>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+  </ion-row>
 
 </ion-content>

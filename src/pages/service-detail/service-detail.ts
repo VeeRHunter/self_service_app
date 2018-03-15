@@ -22,4 +22,8 @@ export class ServiceDetailPage {
     console.log('ionViewDidLoad ServiceDetailPage');
   }
 
+  goback(){
+    this.navCtrl.pop();
+  }
+
 }

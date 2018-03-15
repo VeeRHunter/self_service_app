@@ -71,14 +71,14 @@
     </ion-col>
     <ion-col col-5>
       <ion-row class="button_row">
-        <button ion-button class="button_style1">
+        <button mat-button class="button_style1">
           DOWNLOAD BILL
         </button>
       </ion-row>
     </ion-col>
     <ion-col col-5>
       <ion-row class="button_row">
-        <button ion-button class="button_style2">
+        <button mat-button class="button_style2" (click)="goto_payNow()">
           PAY NOW
         </button>
       </ion-row>
@@ -92,7 +92,7 @@
     </ion-col>
     <ion-col col-10>
       <ion-row class="button_row">
-        <button ion-button class="button_style1" (click)="goto_billHistory()">
+        <button mat-button class="button_style1" (click)="goto_billHistory()">
           BILL HISTORY
         </button>
       </ion-row>
@@ -106,7 +106,7 @@
     </ion-col>
     <ion-col col-10>
       <ion-row class="button_row">
-        <button ion-button class="button_style1" (click)="goto_transactionHistory()">
+        <button mat-button class="button_style1" (click)="goto_transactionHistory()">
           TRANSACTION HISTORY
         </button>
       </ion-row>
@@ -120,7 +120,7 @@
     </ion-col>
     <ion-col col-10>
       <ion-row class="button_row">
-        <button ion-button class="button_style1" (click)="goto_paymentHistory()">
+        <button mat-button class="button_style1" (click)="goto_paymentHistory()">
           PAYMENT METHODS
         </button>
       </ion-row>
