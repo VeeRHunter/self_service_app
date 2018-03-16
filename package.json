@@ -12,15 +12,15 @@
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
-    "@angular/animations": "^5.2.8",
-    "@angular/cdk": "github:angular/cdk-builds",
+    "@angular/animations": "^5.2.9",
+    "@angular/cdk": "^5.2.4",
     "@angular/common": "5.0.3",
     "@angular/compiler": "5.0.3",
     "@angular/compiler-cli": "5.0.3",
     "@angular/core": "5.0.3",
     "@angular/forms": "5.0.3",
     "@angular/http": "5.0.3",
-    "@angular/material": "github:angular/material2-builds",
+    "@angular/material": "^5.2.4",
     "@angular/platform-browser": "5.0.3",
     "@angular/platform-browser-dynamic": "5.0.3",
     "@ionic-native/core": "4.4.0",
@@ -45,9 +45,6 @@
     "typescript": "2.4.2"
   },
   "description": "An Ionic project",
-  "config": {
-    "ionic_copy": "./config/copy.config.js"
-  },
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
