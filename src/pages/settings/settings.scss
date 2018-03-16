@@ -33,6 +33,9 @@ page-settings {
         background-color: white;
         height: 50px;
     }
+    .left_align{
+        text-align: right;
+    }
     .lock_image{
         width: 20px;
         height: 20px;
@@ -45,6 +48,23 @@ page-settings {
         font-size: 17px;
         color: black;
         opacity: 0.5;
+        width: 100%;
+    }
+    .app_version_span{
+        padding-left: 15px;
+        margin-top: auto;
+        margin-bottom: auto;
+        width: 100%;
+        opacity: 0.5;
+        font-size: 17px;
+    }
+    .app_version{
+        margin-top: auto;
+        margin-bottom: auto;
+        padding-right: 10px;
+        width: 100%;
+        opacity: 0.5;
+        font-size: 17px;
     }
 
 }
