@@ -37,6 +37,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { ApiproviderProvider } from '../providers/apiprovider/apiprovider';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -67,6 +69,7 @@ import { MAT_DATE_FORMATS } from '@angular/material/core';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     BrowserAnimationsModule,
+    HttpModule,
     MatInputModule, MatButtonModule, MatChipsModule, MatIconModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule
   ],
   bootstrap: [IonicApp],
@@ -96,7 +99,8 @@ import { MAT_DATE_FORMATS } from '@angular/material/core';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    ApiproviderProvider
   ]
 })
 export class AppModule { }

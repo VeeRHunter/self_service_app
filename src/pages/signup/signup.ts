@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController, LoadingController } from 'ionic-angular';
 import { FormControl, Validators } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { SigninPage } from '../signin/signin';
+import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
 
 /**
  * Generated class for the SignupPage page.
@@ -18,15 +19,24 @@ import { SigninPage } from '../signin/signin';
 })
 export class SignupPage {
 
-  public user_Data = { "username": "", "password": "", "email": "", "phone": "", "confirm": "" };
+  public user_Data = { "username": "", "password": "", "email": "", "phone": "", "address":"", "status": "" };
   public confirm_state: boolean;
 
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
+  passwordFormControl = new FormControl('', [
+    Validators.required
+  ]);
+  phoneFormControl = new FormControl('', [
+    Validators.required
+  ]);
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public send_data: any[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public toastCtrl: ToastController,
+    public apiprovider: ApiproviderProvider) {
   }
 
   ionViewDidLoad() {
@@ -36,20 +46,40 @@ export class SignupPage {
 
   completeAddCompany(comProfileForm) {
     if (comProfileForm.valid && this.emailFormControl.valid) {
-      this.navCtrl.push(SigninPage);
-    }
-  }
+      // this.navCtrl.push(SigninPage);
+      let loading = this.loadingCtrl.create({
+        content: "Please Wait..."
+      });
+      loading.present();
+      let status = "register";
+      this.user_Data.status = status;
+      this.send_data = new Array();
+      this.send_data.push(this.user_Data);
+      this.apiprovider.postData(this.send_data).then((result) => {
+        console.log(Object(result));
+        loading.dismiss();
+        if (Object(result).status == "success") {
+          console.log(result);
+          this.navCtrl.push(SigninPage);
+        } else {
+          let toast = this.toastCtrl.create({
+            message: Object(result).detail,
+            duration: 2000
+          })
+          toast.present();
+        };
 
-  set_confirm() {
-    console.log(this.confirm_state);
-    console.log(this.user_Data);
-    if (this.user_Data.password != this.user_Data.confirm) {
-      this.confirm_state = true;
-    } else {
-      this.confirm_state = false;
+      }, (err) => {
+        let toast = this.toastCtrl.create({
+          message: "No Network",
+          duration: 2000
+        })
+        toast.present();
+        loading.dismiss();
+      });
     }
   }
-  goto_signin(){
+  goto_signin() {
     this.navCtrl.pop();
   }
 

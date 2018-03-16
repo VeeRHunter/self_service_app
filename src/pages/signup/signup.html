@@ -9,7 +9,7 @@
   <ion-row class="header_row">
     <ion-col col-2>
       <ion-row class="full_height">
-        <ion-icon name="ios-arrow-back" (click)="goback()" class="header_back_icon"></ion-icon>
+        <ion-icon name="ios-arrow-back" (click)="goto_signin()" class="header_back_icon"></ion-icon>
       </ion-row>
     </ion-col>
     <ion-col col-8>
@@ -57,9 +57,10 @@
 
     <ion-row class="password_row">
       <mat-form-field class="example-full-width">
-        <input matInput type="number" [(ngModel)]="user_Data.phone" required placeholder="Phone Number" name="password" />
+        <input matInput type="number" [(ngModel)]="user_Data.phone" [formControl]="phoneFormControl" required placeholder="Phone Number"
+          name="password" />
 
-        <mat-error>
+        <mat-error *ngIf="phoneFormControl.hasError('required')">
           <span>Phone Number is required</span>
         </mat-error>
 
@@ -79,11 +80,10 @@
 
     <ion-row class="password_row">
       <mat-form-field class="example-full-width">
-        <input matInput type="password" [(ngModel)]="user_Data.confirm" required placeholder="Confirm Password" name="confirm_password"
-        />
+        <input matInput type="text" [(ngModel)]="user_Data.address" required placeholder="Address" name="address" />
 
-        <mat-error *ngIf="confirm_state == true">
-          <span>Confirm Password is required</span>
+        <mat-error>
+          <span>Address is required</span>
         </mat-error>
 
       </mat-form-field>
