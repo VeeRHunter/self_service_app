@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { SignupPage } from '../signup/signup';
 
 /**
  * Generated class for the SigninPage page.
@@ -62,6 +63,10 @@ export class SigninPage {
     if (comProfileForm.valid) {
       this.navCtrl.push(HomePage);
     }
+  }
+  
+  goto_signup(){
+    this.navCtrl.push(SignupPage);
   }
 
 

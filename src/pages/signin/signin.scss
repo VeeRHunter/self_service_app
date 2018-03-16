@@ -3,6 +3,9 @@ page-signin {
     .logo_row{
         margin-top: 10%;
     }
+    .margin_content{
+        background-color: #fafafa;
+    }
     .logo_class{
         width: 70%;
         height: 100%;
@@ -44,10 +47,18 @@ page-signin {
     }
       
     .example-full-width {
-    width: 100%;
+        width: 100%;
     }
-    .mat-form-field-infix{
-        border-bottom: 1px solid #ddd;
+    .signup_row{
+        margin-top: 10%;
+    }
+    .sign_up_span{
+        margin: auto;
+        font-size: 1.5rem;
+    }
+    .sign_up_page{
+        color: blue;
+        cursor: pointer;
     }
 
 }

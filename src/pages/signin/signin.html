@@ -15,8 +15,8 @@
     <ion-row class="username_row">
       <mat-form-field class="example-full-width">
         <input matInput type="text" placeholder="Username" [(ngModel)]="user_Data.username" required name="username">
-        <mat-error >
-          Email is required
+        <mat-error>
+          Username is required
         </mat-error>
       </mat-form-field>
     </ion-row>
@@ -38,6 +38,15 @@
       </button>
     </ion-row>
   </form>
+
+  <ion-row class="signup_row">
+    <span class="sign_up_span">
+      Not a member yet?
+      <span class="sign_up_page" (click)="goto_signup()">
+        &nbsp;Create account
+      </span>
+    </span>
+  </ion-row>
 
 
 
