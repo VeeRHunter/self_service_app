@@ -39,6 +39,7 @@ import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { ApiproviderProvider } from '../providers/apiprovider/apiprovider';
 import { HttpModule } from '@angular/http';
+import { ChangePasswordPage } from '../pages/change-password/change-password';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { HttpModule } from '@angular/http';
     TopUpPage,
     TopupHistoryPage,
     TransactionHistoryPage,
+    ChangePasswordPage,
   ],
   imports: [
     BrowserModule,
@@ -95,6 +97,7 @@ import { HttpModule } from '@angular/http';
     TopUpPage,
     TopupHistoryPage,
     TransactionHistoryPage,
+    ChangePasswordPage,
   ],
   providers: [
     StatusBar,

@@ -70,6 +70,7 @@ export class SigninPage {
       let loading = this.loadingCtrl.create({
         content: "Please Wait..."
       });
+      this.user_Data.email = this.user_Data.username;
       loading.present();
       let status = "login";
       this.user_Data.status = status;

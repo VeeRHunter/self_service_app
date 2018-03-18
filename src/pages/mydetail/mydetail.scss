@@ -40,6 +40,14 @@ page-mydetail {
         font-size: 1.8rem;
         font-weight: bold;
     }
+    .change_span{
+        width: 100%;
+        color: #3982a3;
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: auto;
+        background: transparent !important;
+    }
     .pencil_class{
         width:16px;
         height: 16px;
@@ -55,5 +63,7 @@ page-mydetail {
         padding-top: 5px;
         padding-bottom: 5px;
     }
-
+    form, input, optgroup, select{
+        width: 100%;
+    }
 }

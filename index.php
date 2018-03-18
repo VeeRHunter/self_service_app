@@ -66,6 +66,7 @@
 			$email = $request[0]->email;
 			$phone = $request[0]->phone;
 			$password = $request[0]->password;
+			$address = $request[0]->address;
 
 			$isstate = 2;
 			
@@ -80,7 +81,7 @@
 			}
 			if($isstate == 2)
 			{
-				$insert="INSERT INTO `user_db` (`username`, `email`, `phone`, `password`) VALUES ('$username', '$email', '$phone', '$password')";
+				$insert="INSERT INTO `user_db` (`username`, `email`, `phone`, `password`, `address`) VALUES ('$username', '$email', '$phone', '$password', '$address')";
 				if(mysqli_query($con,$insert)){
 					$sel_id = "select * from user_db where email='$email' or username='$username'";
 					$query_id=mysqli_query($con, $sel_id); 
@@ -116,83 +117,79 @@
 			}
 			
 		}
-		else if($status == "getwork_detail")
+		else if($status == "change_password")
 		{
-			$username = $request[0]->username;
+			$old_pass = $request[0]->old_pass;
+			$new_pass = $request[0]->new_pass;
 			$email = $request[0]->email;
 
-			$worker_data = [];
-			$feedback_data = [];
-
-			$sel = "select * from worker where email='$email' or username='$username'";			
+			$sel = "SELECT * FROM user_db WHERE email='$email'";
+		
 			$query = mysqli_query($con,$sel);
 			if(!$query){
-				echo json_encode(['status'=>'fail','detail'=>'empty email or username']);
-				exit;
-			}
-			else{
-				$row=mysqli_fetch_array($query,MYSQLI_ASSOC);
-				$worker_data = $row;
-
-				$worker_id = $row['user_id'];
-				$sel_feedback = "select * from feedback where worker_id='$worker_id'";
-				$query_feedback = mysqli_query($con,$sel_feedback);
-				while($row = mysqli_fetch_array($query_feedback,MYSQLI_ASSOC)){
-					$sam_array = [];
-					$sam_array['feed_back'] = $row['feed_back'];
-
-					$buyer_id = $row['buyer_id'];
-					$sel_buyerlist =  "select * from buyer where user_id='$buyer_id'";
-					$query_buyerlist = mysqli_query($con,$sel_buyerlist);
-					$row_buyerlist = mysqli_fetch_array($query_buyerlist,MYSQLI_ASSOC);
-
-					$sam_array['photo'] = $row_buyerlist['photo'];
-
-					array_push($feedback_data, $sam_array);
-				}				
-				echo json_encode(['status'=>'success','detail'=>$worker_data, 'feedback'=>$feedback_data]);
-			}
-			
-		}
-		else if($status == "get_buyerData")
-		{
-			$email = $request[0]->email;
-
-			$worker_data = [];
-			$total_data = [];
-
-			$sel = "select * from buyer where email='$email'";			
-			$query = mysqli_query($con,$sel);
-			if(!$query){
-				echo json_encode(['status'=>'fail','detail'=>'empty email or username']);
+				echo json_encode(['status'=>'fail','detail'=>'empty user data']);
 				exit;
 			}
 			else{
 				$row=mysqli_fetch_array($query,MYSQLI_ASSOC);
 
-				$buyer_id = $row['user_id'];
-
-				$sel_book = "select * from booklist where buyer_id='$buyer_id'";
-				$query_book = mysqli_query($con,$sel_book);
-				while($row_book = mysqli_fetch_array($query_book,MYSQLI_ASSOC)){
-					$sam_array = [];
-					$sam_array['book_date'] = $row_book['book_date'];
-					$sam_array['book_hour'] = $row_book['book_hour'];
-
-					$worker_id = $row_book['worker_id'];
-
-					$sel_workerData =  "select * from worker where user_id='$worker_id'";
-					$query_workerData = mysqli_query($con,$sel_workerData);
-					$row_workerlist = mysqli_fetch_array($query_workerData,MYSQLI_ASSOC);
-
-					$sam_array['photo'] = $row_workerlist['photo1'];
-
-					array_push($total_data, $sam_array);
-				}				
-				echo json_encode(['status'=>'success','detail'=>$total_data]);
+				if($old_pass == $row['password']){
+					$update="UPDATE user_db SET `password` = '$new_pass' WHERE email = '$email'";
+					if(mysqli_query($con,$update)){
+						echo json_encode(['status'=>'success','detail'=>'password changed']);
+					} else{
+						echo json_encode(['status'=>'success','detail'=>'password change fail']);
+					}
+				} else {
+					echo json_encode(['status'=>'fail','detail'=>'Old password is not correct. Please try again']);
+				}
 			}
 			
 		}
+		else if($status == "change_userinfo")
+		{
+			$old_userData = $request[0]->old_userData;
+			$new_userData = $request[0]->new_userData;
+			$email = $request[0]->email;			
+
+			$sel = "SELECT * FROM user_db WHERE email='$email'";
+		
+			$query = mysqli_query($con,$sel);
+			if(!$query){
+				echo json_encode(['status'=>'fail','detail'=>'empty user data']);
+				exit;
+			}
+			else{
+
+				$row=mysqli_fetch_array($query,MYSQLI_ASSOC);
+
+				$update;
+
+				switch( $request[0]->detail ){
+					case "username":
+						$update = "UPDATE user_db SET `username` = '$new_userData' WHERE email = '$email'";
+					break;
+					case "address":
+						$update = "UPDATE user_db SET `address` = '$new_userData' WHERE email = '$email'";
+					break;
+					case "email":
+						$update = "UPDATE user_db SET `email` = '$new_userData' WHERE email = '$email'";
+					break;
+					case "phone":
+						$update = "UPDATE user_db SET `phone` = '$new_userData' WHERE email = '$email'";
+					break;
+				}
+				if(mysqli_query($con,$update)){
+					$return_quary = $request[0]->detail." changed";
+					echo json_encode(['status'=>'success', 'detail'=>$return_quary]);
+				} else{
+					$return_quary = $request[0]->detail." change fail";
+					echo json_encode(['status'=>'success','detail'=>'password change fail']);
+				}
+			}
+			
+		}
+		
 		else if($status == "save_book")
 		{
 			$book_date = $request[0]->book_date;
