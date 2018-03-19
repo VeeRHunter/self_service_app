@@ -175,6 +175,96 @@
 			
 		}
 
+		else if($status == "download_bill_total")
+		{
+			$email = $request->email;
+
+			$sel = "SELECT * FROM user_db WHERE email='$email'";		
+			$query = mysqli_query($con, $sel);
+
+			$mpdf = new \Mpdf\Mpdf();
+
+			$style_1 = 'font-size: 40px; color: #3982a3; width: 100%; text-align: center; font-weight: bold;';
+
+			// echo $sel;
+			if(!$query){
+				echo json_encode(['status'=>'fail','detail'=>'empty email or password']);
+				exit;
+			}
+			else{
+				$row=mysqli_fetch_array($query,MYSQLI_ASSOC);
+
+				$user_id = $row['ID'];
+
+				$html_data = '				
+					<style>
+					.main_row {
+						font-size:25px; width:100%;
+						font-weight: bold; 
+						padding: 20px; 
+						border-radius: 10px; 
+						color: black; 
+						margin-top: 30px; 
+						margin-bottom: 10px; 
+						border: 1px solid #ddd;
+						background-color: white;
+					}
+					.main_title{
+						font-size: 40px; 
+						color: #3982a3; 
+						width: 100%; 
+						text-align: center; 
+						font-weight: bold;
+					}
+					.first_span {
+						color: black; 
+						width: 100%;
+					}
+					.second_span {
+						color: #3982a3;
+					}
+					</style>
+					<body style="background-color: #fafafa;">
+						<p class="main_title">Bill Data of '.$row['username'].'</p>
+				';
+
+				$sel_bill = "SELECT * FROM bill_db WHERE user_id='$user_id'";		
+				$query = mysqli_query($con, $sel_bill);
+
+				while($row_bill=mysqli_fetch_array($query,MYSQLI_ASSOC)){
+					$bill_num = '<div class="main_row">
+									<span class="first_span">
+										Bill Number => 
+										<span class="second_span">'.$row_bill['bill_num'].'
+										</span>
+									</span><br>';
+
+					$bill_date = '<span class="first_span">
+									Due Date => 
+									<span class="second_span">'.$row_bill['due_date'].'
+									</span>
+								</span><br>';
+
+					$bill_amount = '<span class="first_span">
+										Amount Owin => 
+										<span class="second_span">'.$row_bill['bill_amount'].'
+										</span>
+									</span></div>';
+										
+					$html_data = $html_data.$bill_num.$bill_date.$bill_amount;
+				}
+
+				$html_data = $html_data.'</body>';
+
+				$mpdf->WriteHTML($html_data);
+
+				$mpdf->Output('MyPDF.pdf', 'F');
+
+				echo json_encode(['status'=>'success','detail'=>'Download success']);
+			}
+			
+		}
+
 		else if($status == "change_password")
 		{
 			$old_pass = $request->old_pass;

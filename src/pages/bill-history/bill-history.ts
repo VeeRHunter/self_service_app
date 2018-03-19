@@ -112,7 +112,9 @@ export class BillHistoryPage {
   }
 
   download_pdf(index) {
-    const url = "http://localhost/test_php/MyPDF.pdf";
+    const url = "http://192.168.2.124/test_php/MyPDF.pdf";
+
+    // file:///storage/emulated/0/Android/data/com.self.serviceapp/files/MyPDF2.pdf
 
     this.file.checkDir('file:///storage/emulated/0/', 'Self_Service').then((result_check) => {
 
@@ -122,6 +124,11 @@ export class BillHistoryPage {
       this.fileTransfer.download(url, 'file:///storage/emulated/0/Self_Service/' + 'MyPDF' + index + '.pdf').then((entry) => {
         console.log(this.file.externalDataDirectory);
         console.log('download complete: ' + entry.toURL());
+        let toast = this.toastCtrl.create({
+          message: 'download complete: ' + entry.toURL(),
+          duration: 2000
+        });
+        toast.present();
       }, (error) => {
         console.log('download failed');
       });
@@ -132,6 +139,11 @@ export class BillHistoryPage {
         this.fileTransfer.download(url, 'file:///storage/emulated/0/Self_Service/' + 'MyPDF' + index + '.pdf').then((entry) => {
           console.log(this.file.externalDataDirectory);
           console.log('download complete: ' + entry.toURL());
+          let toast = this.toastCtrl.create({
+            message: 'download complete: ' + entry.toURL(),
+            duration: 2000
+          })
+          toast.present();
         }, (error) => {
           console.log('download failed');
         });
@@ -139,9 +151,7 @@ export class BillHistoryPage {
         console.log("Create error");
       });
 
-      // console.log('There is no Such dir');
-
-    })
+    });
 
 
     // this.fileTransfer.download(url, 'file:///storage/emulated/0/Android/data/com.self.serviceapp/files/' + 'MyPDF' + index + '.pdf').then((entry) => {
