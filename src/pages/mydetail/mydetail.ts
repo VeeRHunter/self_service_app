@@ -30,8 +30,8 @@ export class MydetailPage {
     Validators.email,
   ]);
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public toastCtrl: ToastController,
-    public apiprovider: ApiproviderProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController
+    , public toastCtrl: ToastController, public apiprovider: ApiproviderProvider) {
   }
 
   ionViewDidLoad() {
@@ -49,10 +49,8 @@ export class MydetailPage {
     loading.present();
     let status = "get_detail";
     this.user_Data.status = status;
-    this.send_data = new Array();
-    this.send_data.push(this.user_Data);
     console.log(this.user_Data);
-    this.apiprovider.postData(this.send_data).then((result) => {
+    this.apiprovider.postData(this.user_Data).then((result) => {
       console.log(Object(result));
       loading.dismiss();
       if (Object(result).status == "success") {
@@ -188,9 +186,7 @@ export class MydetailPage {
     this.temp_Data.email = localStorage.getItem("user_email");
     let status = "change_userinfo";
     this.temp_Data.status = status;
-    this.send_data = new Array();
-    this.send_data.push(this.temp_Data);
-    this.apiprovider.postData(this.send_data).then((result) => {
+    this.apiprovider.postData(this.temp_Data).then((result) => {
       console.log(Object(result));
       if (Object(result).status == "success") {
 

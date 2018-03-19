@@ -56,6 +56,8 @@ export class MyApp {
 
   openPage(page) {
     if (page.title == "LOGOUT") {
+      localStorage.setItem("user_email", "");
+      this.nav.setRoot(SigninPage);
     } else {
       this.nav.push(page.component);
     }

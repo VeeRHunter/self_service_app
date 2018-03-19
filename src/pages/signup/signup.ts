@@ -53,9 +53,7 @@ export class SignupPage {
       loading.present();
       let status = "register";
       this.user_Data.status = status;
-      this.send_data = new Array();
-      this.send_data.push(this.user_Data);
-      this.apiprovider.postData(this.send_data).then((result) => {
+      this.apiprovider.postData(this.user_Data).then((result) => {
         console.log(Object(result));
         loading.dismiss();
         if (Object(result).status == "success") {

@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
   and Angular DI.
 */
 
-let apiurl:string = "http://localhost/test_php/";
+let apiurl: string = "http://localhost/test_php/";
 
 
 @Injectable()
@@ -19,17 +19,17 @@ export class ApiproviderProvider {
     console.log('Hello PeopleproviderProvider Provider');
   }
 
-  
+
   postData(credentials) {
     // console.log(credentials);
-    return new Promise((resolve, reject) => {       
+    return new Promise((resolve, reject) => {
 
       this.http.post(apiurl, credentials).subscribe(res => {
         resolve(res.json());
       }, (err) => {
         reject(err);
       });
-      
+
     });
   }
 

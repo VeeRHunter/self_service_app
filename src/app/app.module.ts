@@ -42,6 +42,10 @@ import { HttpModule } from '@angular/http';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
 
 
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file'
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -102,6 +106,8 @@ import { ChangePasswordPage } from '../pages/change-password/change-password';
   providers: [
     StatusBar,
     SplashScreen,
+    FileTransfer,
+    File,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ApiproviderProvider
   ]
