@@ -112,7 +112,7 @@ export class BillHistoryPage {
   }
 
   download_pdf(index) {
-    const url = "http://192.168.2.124/test_php/MyPDF.pdf";
+    const url = "http://localhost/test_php/MyPDF.pdf";
 
     // file:///storage/emulated/0/Android/data/com.self.serviceapp/files/MyPDF2.pdf
 

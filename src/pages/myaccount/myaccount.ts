@@ -67,7 +67,7 @@ export class MyaccountPage {
   }
   download_bill() {
 
-    const url = "http://192.168.2.124/test_php/MyPDF.pdf";
+    const url = "http://localhost/test_php/MyPDF.pdf";
 
     this.file.checkDir('file:///storage/emulated/0/', 'Self_Service').then((result_check) => {
 
