@@ -15,7 +15,7 @@
     <ion-col col-8>
       <ion-row class="full_height">
         <span class="header_span">
-          MY ACCOUNT
+          {{ 'my_account' | translate }}
         </span>
       </ion-row>
     </ion-col>
@@ -30,7 +30,7 @@
     <ion-col col-5>
       <ion-row class="normal_margin">
         <span class="amount_span">
-          Account Number
+          {{ 'account_number' | translate }}
         </span>
       </ion-row>
       <ion-row class="normal_margin">
@@ -42,7 +42,7 @@
     <ion-col col-5>
       <ion-row class="normal_margin">
         <span class="amount_span">
-          Amount Owing
+          {{ 'amount_owing' | translate }}
         </span>
       </ion-row>
       <ion-row class="normal_margin">
@@ -56,7 +56,7 @@
   <ion-row class="first_row">
     <ion-row class="normal_margin">
       <span class="amount_span">
-        Due date
+        {{ 'due_date' | translate }}
       </span>
     </ion-row>
     <ion-row class="normal_margin">
@@ -72,14 +72,14 @@
     <ion-col col-5>
       <ion-row class="button_row">
         <button mat-button class="button_style1" (click)="click_download()">
-          DOWNLOAD BILL
+          {{ 'download_bill' | translate }}
         </button>
       </ion-row>
     </ion-col>
     <ion-col col-5>
       <ion-row class="button_row">
         <button mat-button class="button_style2" (click)="goto_payNow()">
-          PAY NOW
+          {{ 'pay_now' | translate }}
         </button>
       </ion-row>
     </ion-col>
@@ -93,7 +93,7 @@
     <ion-col col-10>
       <ion-row class="button_row">
         <button mat-button class="button_style1" (click)="goto_billHistory()">
-          BILL HISTORY
+          {{ 'bill_history' | translate }}
         </button>
       </ion-row>
     </ion-col>
@@ -107,7 +107,7 @@
     <ion-col col-10>
       <ion-row class="button_row">
         <button mat-button class="button_style1" (click)="goto_transactionHistory()">
-          TRANSACTION HISTORY
+          {{ 'transaction_history' | translate }}
         </button>
       </ion-row>
     </ion-col>
@@ -121,7 +121,7 @@
     <ion-col col-10>
       <ion-row class="button_row">
         <button mat-button class="button_style1" (click)="goto_paymentHistory()">
-          PAYMENT METHODS
+          {{ 'payment_method' | translate }}
         </button>
       </ion-row>
     </ion-col>

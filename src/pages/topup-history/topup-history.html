@@ -16,7 +16,7 @@
     <ion-col col-6>
       <ion-row class="full_height">
         <p class="header_span">
-          TopUp-04155188882
+          {{ 'topup' | translate }}-04155188882
         </p>
         <p class="payment_id">40000560</p>
       </ion-row>
@@ -24,7 +24,7 @@
     <ion-col col-3>
       <ion-row class="full_height">
         <p class="header_span" (click)="goto_newTopup()">
-          +New
+          +{{ 'new' | translate }}
         </p>
       </ion-row>
     </ion-col>
@@ -40,7 +40,7 @@
       <ion-col col-6 class="left_col">
         <ion-row class="full_height">
           <span class="name_span">
-            TopUp
+            {{ 'topup' | translate }}
           </span>
           <span class="detail_span">
             {{list.top}}
@@ -51,7 +51,7 @@
       <ion-col col-6 class="right_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Date
+            {{ 'date' | translate }}
           </span>
           <span class="receipt_span right_col">
             {{list.date}}
@@ -64,7 +64,7 @@
       <ion-col col-6 class="left_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Expiry
+            {{ 'expiry' | translate }}
           </span>
           <span class="detail_span">
             {{list.expiry}}
@@ -74,7 +74,7 @@
       <ion-col col-6 class="right_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Status
+            {{ 'status' | translate }}
           </span>
           <span class="detail_span">
             {{list.status}}

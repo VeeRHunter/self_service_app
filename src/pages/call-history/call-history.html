@@ -15,7 +15,7 @@
     <ion-col col-8>
       <ion-row class="full_height">
         <span class="header_span">
-          Call History
+          {{ 'call_history' | translate }}
         </span>
       </ion-row>
     </ion-col>
@@ -31,7 +31,7 @@
       <ion-col col-4 class="left_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Number Called
+            {{ 'number_called' | translate }}
           </span>
           <span class="detail_span">
             {{list.call_num}}
@@ -42,7 +42,7 @@
       <ion-col col-8 class="right_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Date
+            {{ 'date' | translate }}
           </span>
           <span class="receipt_span right_col">
             {{list.date}}
@@ -55,7 +55,7 @@
       <ion-col col-4 class="left_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Duration
+            {{ 'duration' | translate }}
           </span>
           <span class="detail_span">
             {{list.duration}}
@@ -65,7 +65,7 @@
       <ion-col col-4>
         <ion-row class="full_height">
           <span class="name_span center_text">
-            Tariff
+            {{ 'tariff' | translate }}
           </span>
           <span class="detail_span center_text">
             {{list.tariff}}
@@ -76,7 +76,7 @@
       <ion-col col-4 class="right_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Cost
+            {{ 'cost' | translate }}
           </span>
           <span class="detail_span">
             ${{list.cost}}
@@ -87,7 +87,7 @@
 
   </ion-row>
 
-  <ion-row class="other_row">
+  <!-- <ion-row class="other_row">
     <ion-row class="first_row">
       <ion-col col-4 class="left_col">
         <ion-row class="full_height">
@@ -146,6 +146,6 @@
       </ion-col>
     </ion-row>
 
-  </ion-row>
+  </ion-row> -->
 
 </ion-content>

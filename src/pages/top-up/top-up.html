@@ -15,7 +15,7 @@
     <ion-col col-8>
       <ion-row class="full_height">
         <p class="header_span">
-          New TopUp
+          {{ 'new_topup' | translate }}
         </p>
         <p class="payment_id">[2132]</p>
       </ion-row>
@@ -30,27 +30,27 @@
   <form #comProfileForm="ngForm" id="comProfileForm" (ngSubmit)="completeAddCompany(comProfileForm)" novalidate>
     <ion-row class="payment_row">
       <span class="payment_title_span">
-        TopUp
+        {{ 'topup' | translate }}
       </span>
     </ion-row>
 
     <ion-row class="payment_row">
       <ion-col>
-        <mat-select placeholder="Select" [formControl]="selType" [(ngModel)]="top_Data.topup" class="select_class" required>
+        <mat-select placeholder="{{ 'select' | translate }}" [formControl]="selType" [(ngModel)]="top_Data.topup" class="select_class" required>
           <mat-option value="Visa">
-            Visa
+            {{ 'visa' | translate }}
           </mat-option>
           <mat-option value="Paypal">
-            Paypal
+            {{ 'paypal' | translate }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="selType.hasError('required')">Please choose an type of payment</mat-error>
+        <mat-error *ngIf="selType.hasError('required')">{{ 'choose_type_of_payment' | translate }}</mat-error>
       </ion-col>
     </ion-row>
 
     <ion-row class="payment_row">
       <span class="payment_title_span">
-        Start Date
+        {{ 'start_date' | translate }}
       </span>
     </ion-row>
 
@@ -61,7 +61,7 @@
         <mat-datepicker #myDatepicker></mat-datepicker>
 
         <mat-error *ngIf="changeDate.hasError('required')">
-          <span>Start Date is required</span>
+          <span>{{ 'start_date_required' | translate }}</span>
         </mat-error>
 
       </mat-form-field>
@@ -69,27 +69,27 @@
 
     <ion-row class="payment_row">
       <span class="payment_title_span">
-        Payment Method
+        {{ 'payment_method' | translate }}
       </span>
     </ion-row>
 
     <ion-row class="payment_row">
       <ion-col>
-        <mat-select placeholder="Debit Card" [formControl]="setMethod" [(ngModel)]="top_Data.method" class="select_class" required>
+        <mat-select placeholder="{{ 'debit_card' | translate }}" [formControl]="setMethod" [(ngModel)]="top_Data.method" class="select_class" required>
           <mat-option value="Visa">
-            Visa
+            {{ 'visa' | translate }}
           </mat-option>
           <mat-option value="Paypal">
-            Paypal
+            {{ 'paypal' | translate }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="setMethod.hasError('required')">Please choose an type of payment</mat-error>
+        <mat-error *ngIf="setMethod.hasError('required')">{{ 'choose_type_of_payment' | translate }}</mat-error>
       </ion-col>
     </ion-row>
 
     <ion-row class="add_new_button">
       <button ion-button class="button_style1 add_button" (click)="add_new()">
-        + Add New
+        + {{ 'add_new' | translate }}
       </button>
     </ion-row>
 
@@ -99,14 +99,14 @@
       <ion-col col-5>
         <ion-row class="button_row">
           <button ion-button class="button_style1">
-            CREATE
+            {{ 'create' | translate }}
           </button>
         </ion-row>
       </ion-col>
       <ion-col col-5>
         <ion-row class="button_row">
           <button ion-button class="button_style2" (click)="goback()">
-            CANCEL
+            {{ 'cancel_UP' | translate }}
           </button>
         </ion-row>
       </ion-col>

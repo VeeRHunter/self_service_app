@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
+import { Platform, Nav, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -22,6 +22,13 @@ import { SettingsPage } from '../pages/settings/settings';
 import { TopUpPage } from '../pages/top-up/top-up';
 import { TopupHistoryPage } from '../pages/topup-history/topup-history';
 import { TransactionHistoryPage } from '../pages/transaction-history/transaction-history';
+
+
+import { TranslateService } from '@ngx-translate/core';
+
+
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -30,37 +37,88 @@ export class MyApp {
   rootPage: any = SigninPage;
 
 
-  pages: Array<{ title: string, component: any, image: string }>;
+  public pages: Array<{ title: string, component: any, image: string }>;
   bottom_pages: Array<{ title: string, component: any, image: string }>;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen
+    , public translate: TranslateService, public events: Events) {
 
-    this.pages = [
-      { title: 'Home', component: HomePage, image: "home" },
-      { title: 'MY DETAILS', component: MydetailPage, image: "list" },
-      { title: 'MY ACCOUNT', component: MyaccountPage, image: "person_icon" },
-      { title: 'MY SERVICES', component: MyServicesPage, image: "visa_card" },
-      { title: 'MY DEVICES', component: MyDevicesPage, image: "devices" }
-    ];
-    this.bottom_pages = [
-      { title: 'SETTINGS', component: SettingsPage, image: "setting" },
-      { title: 'LOGOUT', component: null, image: "log_out" },
-    ];
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
+    events.subscribe('user:created', () => {
+      this.check_again();
+    });
+
+    this.ionicInit();
+
+    this.platform.ready().then(() => {
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
     });
   }
 
+  loggedIn() {
+    console.log("logged in");
+  }
+
   openPage(page) {
-    if (page.title == "LOGOUT") {
-      localStorage.setItem("user_email", "");
-      this.nav.setRoot(SigninPage);
-    } else {
-      this.nav.push(page.component);
+    this.translate.get('logout').subscribe(
+      value => {
+
+        if (page.title == value) {
+          localStorage.setItem("user_email", "");
+          this.nav.setRoot(SigninPage);
+        } else {
+          this.nav.push(page.component);
+        }
+
+      }
+    );
+  }
+
+  ionicInit() {
+
+    this.pages = [
+      { title: 'home', component: HomePage, image: "home" },
+      { title: 'my_details', component: MydetailPage, image: "list" },
+      { title: 'my_account', component: MyaccountPage, image: "person_icon" },
+      { title: 'my_services', component: MyServicesPage, image: "visa_card" },
+      { title: 'my_devices', component: MyDevicesPage, image: "devices" }
+    ];
+
+    this.bottom_pages = [
+      { title: 'settings', component: SettingsPage, image: "setting" },
+      { title: 'logout', component: null, image: "log_out" },
+    ];
+
+    for (let list of this.pages) {
+      console.log(list.title);
     }
+
+    this.translate.addLangs(['en', 'ru']);
+    this.translate.setDefaultLang(localStorage.getItem('set_lng') != null ? localStorage.getItem('set_lng') : "en");
+    this.translate.use(localStorage.getItem('set_lng') != null ? localStorage.getItem('set_lng') : "en");
+
+    for (let list of this.pages) {
+      this.translate.get(list.title).subscribe(
+        value => {
+          list.title = value;
+          console.log(list.title);
+        }
+      );
+    }
+
+    for (let list of this.bottom_pages) {
+      this.translate.get(list.title).subscribe(
+        value => {
+          list.title = value;
+        }
+      );
+    }
+  }
+
+  check_again() {
+    console.log("This is ioniViewDidLoad function in app.component.ts");
+    this.ionicInit();
+    // window.location.reload();
   }
 }
 

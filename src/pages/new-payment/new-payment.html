@@ -15,7 +15,7 @@
     <ion-col col-8>
       <ion-row class="full_height">
         <p class="header_span">
-          New Payment Method
+          {{ 'new_payment_method' | translate }}
         </p>
         <p class="payment_id">40000560</p>
       </ion-row>
@@ -30,37 +30,37 @@
   <form #comProfileForm="ngForm" id="comProfileForm" (ngSubmit)="completeAddCompany(comProfileForm)" novalidate>
     <ion-row class="payment_row">
       <span class="payment_title_span">
-        Payment Method
+        {{ 'payment_method' | translate }}
       </span>
     </ion-row>
 
     <ion-row class="payment_row">
       <ion-col>
-        <mat-select placeholder="Select" [formControl]="selType" [(ngModel)]="pay_Data.method" class="select_class" required>
+        <mat-select placeholder="{{ 'select' | translate }}" [formControl]="selType" [(ngModel)]="pay_Data.method" class="select_class" required>
           <mat-option value="Visa">
-            Visa
+            {{ 'visa' | translate }}
           </mat-option>
           <mat-option value="Paypal">
-            Paypal
+            {{ 'paypal' | translate }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="selType.hasError('required')">Please choose an type of payment</mat-error>
+        <mat-error *ngIf="selType.hasError('required')">{{ 'choose_type_of_payment' | translate }}</mat-error>
       </ion-col>
     </ion-row>
 
     <ion-row class="payment_row">
       <span class="payment_title_span">
-        Name
+        {{ 'name' | translate }}
       </span>
     </ion-row>
 
     <ion-row class="payment_row">
       <mat-form-field class="example-full-width">
-        <input matInput class="payment_input" type="text" #title="ngModel" [(ngModel)]="pay_Data.name" required placeholder="Your name"
+        <input matInput class="payment_input" type="text" #title="ngModel" [(ngModel)]="pay_Data.name" required placeholder="{{ 'your_name' | translate }}"
           name="name" />
 
         <mat-error id="matLoginError2">
-          <span>Your name is required</span>
+          <span>{{ 'your_name_required' | translate }}</span>
         </mat-error>
 
       </mat-form-field>
@@ -69,17 +69,17 @@
 
     <ion-row class="payment_row">
       <span class="payment_title_span">
-        Creadit Card Number
+        {{ 'credit_card_num' | translate }}
       </span>
     </ion-row>
 
     <ion-row class="payment_row">
       <mat-form-field class="example-full-width">
-        <input matInput class="payment_input" type="text" #title="ngModel" [(ngModel)]="pay_Data.cardnum" required placeholder="16 Digit Credit Card Number"
+        <input matInput class="payment_input" type="text" #title="ngModel" [(ngModel)]="pay_Data.cardnum" required placeholder="{{ '16_digit_credit_num' | translate }}"
           name="CardNumber" />
 
         <mat-error id="matLoginError2">
-          <span>Creadit Card Number is required</span>
+          <span>{{ 'credit_card_num_required' | translate }}</span>
         </mat-error>
 
       </mat-form-field>
@@ -89,7 +89,7 @@
 
     <ion-row class="payment_row">
       <span class="payment_title_span">
-        Expiry
+        {{ 'expiry' | translate }}
       </span>
     </ion-row>
 
@@ -101,7 +101,7 @@
               {{list}}
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="selExm.hasError('required')">Please choose an type of payment</mat-error>
+          <mat-error *ngIf="selExm.hasError('required')">{{ 'choose_type_of_payment' | translate }}</mat-error>
 
           <!-- <ion-select [(ngModel)]="pay_Data.exm" class="expire_select">
           <ion-option value="none">--</ion-option>
@@ -112,12 +112,12 @@
       </ion-col>
       <ion-col col-4>
         <ion-row class="full_height">
-          <mat-select placeholder="Select" [formControl]="selExy" [(ngModel)]="pay_Data.exy" class="expire_select" required>
+          <mat-select placeholder="{{ 'select' | translate }}" [formControl]="selExy" [(ngModel)]="pay_Data.exy" class="expire_select" required>
             <mat-option *ngFor="let list of expireYear" value="{{list}}">
               {{list}}
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="selExy.hasError('required')">Please choose an type of payment</mat-error>
+          <mat-error *ngIf="selExy.hasError('required')">{{ 'choose_type_of_payment' | translate }}</mat-error>
 
           <!-- <ion-select [(ngModel)]="pay_Data.exy" class="expire_select">
           <ion-option *ngFor="let list of expireYear" value="{{list}}">{{list}}</ion-option>
@@ -132,14 +132,14 @@
       <ion-col col-5>
         <ion-row class="button_row">
           <button ion-button class="button_style1">
-            ADD
+            {{ 'add' | translate }}
           </button>
         </ion-row>
       </ion-col>
       <ion-col col-5>
         <ion-row class="button_row">
           <button ion-button class="button_style2" (click)="goback()">
-            CANCEL
+            {{ 'cancel_UP' | translate }}
           </button>
         </ion-row>
       </ion-col>

@@ -8,6 +8,9 @@ import { FileTransferObject, FileTransfer } from '@ionic-native/file-transfer';
 import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
 import { File } from '@ionic-native/file'
 
+
+import { TranslateService } from '@ngx-translate/core';
+
 /**
  * Generated class for the MyaccountPage page.
  *
@@ -24,12 +27,14 @@ export class MyaccountPage {
 
   fileTransfer: FileTransferObject = this.transfer.create();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController
-    , public toastCtrl: ToastController, public apiprovider: ApiproviderProvider, public transfer: FileTransfer, public file: File) {
+  constructor(public navCtrl: NavController, public translate: TranslateService, public navParams: NavParams, public loadingCtrl: LoadingController
+    , public toastCtrl: ToastController, public apiprovider: ApiproviderProvider, public transfer: FileTransfer
+    , public file: File) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyaccountPage');
+    this.ionicInit();
   }
   goto_billHistory() {
     this.navCtrl.push(BillHistoryPage);
@@ -105,6 +110,15 @@ export class MyaccountPage {
       });
 
     });
+  }
+
+  ionicInit() {
+    console.log(localStorage.getItem("set_lng"));
+    if (typeof (localStorage.getItem("set_lng")) == "undefined" || localStorage.getItem("set_lng") == "" || localStorage.getItem("set_lng") == null) {
+      this.translate.use('en');
+    } else {
+      this.translate.use(localStorage.getItem("set_lng"));
+    }
   }
 
 }

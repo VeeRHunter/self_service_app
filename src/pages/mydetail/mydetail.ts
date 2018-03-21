@@ -3,6 +3,9 @@ import { IonicPage, NavController, NavParams, LoadingController, ToastController
 import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
 import { FormControl, Validators } from '@angular/forms';
 
+
+import { TranslateService } from '@ngx-translate/core';
+
 /**
  * Generated class for the MydetailPage page.
  *
@@ -31,7 +34,7 @@ export class MydetailPage {
   ]);
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController
-    , public toastCtrl: ToastController, public apiprovider: ApiproviderProvider) {
+    , public toastCtrl: ToastController, public apiprovider: ApiproviderProvider, public translate: TranslateService) {
   }
 
   ionViewDidLoad() {
@@ -40,6 +43,14 @@ export class MydetailPage {
   }
 
   ionicInit() {
+
+    
+    console.log(localStorage.getItem("set_lng"));
+    if (typeof (localStorage.getItem("set_lng")) == "undefined" || localStorage.getItem("set_lng") == "" || localStorage.getItem("set_lng") == null) {
+      this.translate.use('en');
+    } else {
+      this.translate.use(localStorage.getItem("set_lng"));
+    }
 
     this.user_Data.email = localStorage.getItem("user_email");
 
@@ -91,6 +102,8 @@ export class MydetailPage {
               } else {
                 this.user_Data.username = this.temp_Data.old_userData;
               }
+              this.change_state.username = !this.change_state.username;
+            } else {
               this.change_state.username = !this.change_state.username;
             }
           } else {

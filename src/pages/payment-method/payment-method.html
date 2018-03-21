@@ -16,7 +16,7 @@
     <ion-col col-6>
       <ion-row class="full_height">
         <p class="header_span">
-          Payment Method
+          {{ 'payment_method' | translate }}
         </p>
         <p class="payment_id">40000560</p>
       </ion-row>
@@ -24,7 +24,7 @@
     <ion-col col-3>
       <ion-row class="full_height">
         <p class="header_span" (click)="goto_newPayment()" >
-          +New
+          +{{ 'new' | translate }}
         </p>
       </ion-row>
     </ion-col>
@@ -41,7 +41,7 @@
       <ion-col col-4 class="left_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Name
+            {{ 'name' | translate }}
           </span>
           <span class="detail_span">
             {{list.name}}
@@ -52,7 +52,7 @@
       <ion-col col-4>
         <ion-row class="full_height">
           <span class="name_span">
-            Type
+            {{ 'type' | translate }}
           </span>
           <span class="detail_span">
             {{list.type}}
@@ -63,7 +63,7 @@
       <ion-col col-4 class="right_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Number
+            {{ 'number' | translate }}
           </span>
           <span class="detail_span">
             {{list.number}}
@@ -76,7 +76,7 @@
       <ion-col col-4 class="left_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Expiry
+            {{ 'expiry' | translate }}
           </span>
           <span class="detail_span">
             {{list.expiry}}
@@ -86,7 +86,7 @@
       <ion-col col-4>
         <ion-row class="full_height">
           <span class="name_span">
-            Status
+            {{ 'status' | translate }}
           </span>
           <span class="detail_span">
             {{list.status}}
@@ -97,7 +97,7 @@
       <ion-col col-4 class="right_col">
         <ion-row class="full_height">
           <button ion-button class="down_button_class">
-            Delete
+            {{ 'delete' | translate }}
           </button>
         </ion-row>
       </ion-col>

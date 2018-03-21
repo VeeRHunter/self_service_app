@@ -15,7 +15,7 @@
     <ion-col col-8>
       <ion-row class="full_height">
         <span class="header_span">
-          Pay
+          {{ 'pay' | translate }}
         </span>
       </ion-row>
     </ion-col>
@@ -28,27 +28,27 @@
 
   <ion-row class="payment_row">
     <span class="payment_title_span">
-      Payment Method
+      {{ 'payment_method' | translate }}
     </span>
   </ion-row>
 
   <ion-row class="payment_row">
     <ion-col>
-      <mat-select placeholder="Select" [(ngModel)]="pay_Data.method" class="select_class" [formControl]="animalControl" required>
+      <mat-select placeholder="{{ 'select' | translate }}" [(ngModel)]="pay_Data.method" class="select_class" [formControl]="animalControl" required>
         <mat-option value="Visa">
-          Visa
+          {{ 'visa' | translate }}
         </mat-option>
         <mat-option value="Paypal">
-          Paypal
+          {{ 'paypal' | translate }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="animalControl.hasError('required')">Please choose an type of payment</mat-error>
+      <mat-error *ngIf="animalControl.hasError('required')">{{ 'choose_type_of_payment' | translate }}</mat-error>
     </ion-col>
   </ion-row>
 
   <ion-row class="payment_row">
     <span class="payment_title_span">
-      Amount
+      {{ 'amount' | translate }}
     </span>
   </ion-row>
 
@@ -64,14 +64,14 @@
     <ion-col col-5>
       <ion-row class="button_row">
         <button ion-button class="button_style2" (click)="goback()">
-          CANCEL
+          {{ 'cancel_UP' | translate }}
         </button>
       </ion-row>
     </ion-col>
     <ion-col col-5>
       <ion-row class="button_row">
         <button ion-button class="button_style1">
-          PAY
+          {{ 'pay' | translate }}
         </button>
       </ion-row>
     </ion-col>

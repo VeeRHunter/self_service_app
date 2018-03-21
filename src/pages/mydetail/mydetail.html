@@ -15,7 +15,7 @@
     <ion-col col-8>
       <ion-row class="full_height">
         <span class="header_span">
-          MY DETAIL
+          {{ 'my_detail' | translate }}
         </span>
       </ion-row>
     </ion-col>
@@ -31,15 +31,15 @@
       <ion-col col-10>
         <ion-row class="full_height">
           <span class="title_span">
-            Name
+            {{ 'name' | translate }}
           </span>
           <span class="detail_span" *ngIf="!change_state.username">
             {{user_Data.username}}
           </span>
           <mat-form-field class="example-full-width" *ngIf="change_state.username">
-            <input matInput type="text" placeholder="Username" [(ngModel)]="user_Data.username" required name="username">
+            <input matInput type="text" placeholder="{{ 'username' | translate }}" [(ngModel)]="user_Data.username" required name="username">
             <mat-error>
-              Username is required
+              {{ 'username_is_required' | translate }}
             </mat-error>
           </mat-form-field>
         </ion-row>
@@ -50,7 +50,7 @@
         </ion-row>
         <ion-row class="full_height" *ngIf="change_state.username" (click)="change_user('username')">
           <span class="change_span">
-            Ok
+            {{ 'ok' | translate }}
           </span>
         </ion-row>
       </ion-col>
@@ -63,15 +63,15 @@
       <ion-col col-10>
         <ion-row class="full_height">
           <span class="title_span">
-            Address
+            {{ 'address' | translate }}
           </span>
           <span class="detail_span" *ngIf="!change_state.address">
             {{user_Data.address}}
           </span>
           <mat-form-field class="example-full-width" *ngIf="change_state.address">
-            <input matInput type="text" placeholder="Address" [(ngModel)]="user_Data.address" required name="address">
+            <input matInput type="text" placeholder="{{ 'address' | translate }}" [(ngModel)]="user_Data.address" required name="address">
             <mat-error>
-              Address is required
+              {{ 'address_is_required' | translate }}
             </mat-error>
           </mat-form-field>
         </ion-row>
@@ -82,7 +82,7 @@
         </ion-row>
         <ion-row class="full_height" *ngIf="change_state.address" (click)="change_user('address')">
           <span class="change_span">
-            Ok
+            {{ 'ok' | translate }}
           </span>
         </ion-row>
       </ion-col>
@@ -95,7 +95,7 @@
       <ion-col col-10>
         <ion-row class="full_height">
           <span class="title_span">
-            Email
+            {{ 'email' | translate }}
           </span>
           <span class="detail_span">
             {{user_Data.email}}
@@ -115,18 +115,18 @@
           <ion-col col-10>
             <ion-row class="full_height">
               <span class="title_span">
-                Email
+                {{ 'email' | translate }}
               </span>
               <mat-form-field class="example-full-width">
-                <input matInput type="email" placeholder="Email" [formControl]="emailFormControl" [(ngModel)]="user_Data.email" required
+                <input matInput type="email" placeholder="{{ 'email' | translate }}" [formControl]="emailFormControl" [(ngModel)]="user_Data.email" required
                   name="email">
 
                 <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                  Please enter a valid email address
+                  {{ 'valid_email_address' | translate }}
                 </mat-error>
 
                 <mat-error *ngIf="emailFormControl.hasError('required')">
-                  Email is required
+                  {{ 'email_is_required' | translate }}
                 </mat-error>
 
               </mat-form-field>
@@ -135,7 +135,7 @@
           <ion-col col-2>
             <ion-row class="full_height button">
               <button class="change_span">
-                Ok
+                {{ 'ok' | translate }}
               </button>
             </ion-row>
           </ion-col>
@@ -150,15 +150,15 @@
       <ion-col col-10>
         <ion-row class="full_height">
           <span class="title_span">
-            Contact
+            {{ 'contact' | translate }}
           </span>
           <span class="detail_span" *ngIf="!change_state.phone">
             +{{user_Data.phone}}
           </span>
           <mat-form-field class="example-full-width" *ngIf="change_state.phone">
-            <input matInput type="number" placeholder="Phone" [(ngModel)]="user_Data.phone" required name="phone">
+            <input matInput type="number" placeholder="{{ 'phone_number' | translate }}" [(ngModel)]="user_Data.phone" required name="phone">
             <mat-error>
-              Phone is required
+              {{ 'phone_number_is_required' | translate }}
             </mat-error>
           </mat-form-field>
         </ion-row>
@@ -169,7 +169,7 @@
         </ion-row>
         <ion-row class="full_height" *ngIf="change_state.phone" (click)="change_user('phone')">
           <span class="change_span">
-            Ok
+            {{ 'ok' | translate }}
           </span>
         </ion-row>
       </ion-col>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController, MenuController } from 'ionic-angular';
 import { MydetailPage } from '../mydetail/mydetail';
 import { MyaccountPage } from '../myaccount/myaccount';
 import { MyServicesPage } from '../my-services/my-services';
@@ -8,6 +8,9 @@ import { PayNowPage } from '../pay-now/pay-now';
 import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file'
+
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'page-home',
@@ -18,12 +21,14 @@ export class HomePage {
   fileTransfer: FileTransferObject = this.transfer.create();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController
-    , public toastCtrl: ToastController, public apiprovider: ApiproviderProvider, public transfer: FileTransfer, public file: File) {
+    , public toastCtrl: ToastController, public apiprovider: ApiproviderProvider, public transfer: FileTransfer
+    , public file: File, public translate: TranslateService, public menu: MenuController) {
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+    this.ionicInit();
   }
   goto_mydetail() {
     this.navCtrl.push(MydetailPage);
@@ -103,6 +108,16 @@ export class HomePage {
       toast.present();
     });
 
+  }
+
+  ionicInit() {
+    this.menu.swipeEnable(true);
+    console.log(localStorage.getItem("set_lng"));
+    if (typeof (localStorage.getItem("set_lng")) == "undefined" || localStorage.getItem("set_lng") == "" || localStorage.getItem("set_lng") == null) {
+      this.translate.use('en');
+    } else {
+      this.translate.use(localStorage.getItem("set_lng"));
+    }
   }
 
 }

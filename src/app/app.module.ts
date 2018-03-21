@@ -38,12 +38,20 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { ApiproviderProvider } from '../providers/apiprovider/apiprovider';
-import { HttpModule } from '@angular/http';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
 
 
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file'
+
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpModule, Http } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
+}
 
 
 @NgModule({
@@ -76,6 +84,14 @@ import { File } from '@ionic-native/file'
     IonicModule.forRoot(MyApp),
     BrowserAnimationsModule,
     HttpModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     MatInputModule, MatButtonModule, MatChipsModule, MatIconModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule
   ],
   bootstrap: [IonicApp],

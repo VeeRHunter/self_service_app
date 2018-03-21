@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { SignupPage } from '../signup/signup';
+
+import { IonicPage, NavController, NavParams, ToastController, LoadingController, MenuController } from 'ionic-angular';
 import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
+
+
+import { TranslateService } from '@ngx-translate/core';
+
 
 /**
  * Generated class for the SigninPage page.
@@ -19,14 +24,6 @@ import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
   selector: 'page-signin',
   templateUrl: 'signin.html',
 })
-
-
-// export class MyErrorStateMatcher implements ErrorStateMatcher {
-//   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-//     const isSubmitted = form && form.submitted;
-//     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-//   }
-// }
 
 
 export class SigninPage {
@@ -44,11 +41,17 @@ export class SigninPage {
   public send_data: any[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public toastCtrl: ToastController,
-    public apiprovider: ApiproviderProvider) {
+    public apiprovider: ApiproviderProvider, public translate: TranslateService, public menu: MenuController) {
+
+    // translate.use('ru');
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SigninPage');
+    this.ionicInit();
+
+
   }
   goto_home() {
     if (this.user_Data.username == "" || this.user_Data.password == "") {
@@ -102,6 +105,16 @@ export class SigninPage {
 
   goto_signup() {
     this.navCtrl.push(SignupPage);
+  }
+
+  ionicInit() {
+    this.menu.swipeEnable(false);
+    console.log(localStorage.getItem("set_lng"));
+    if (typeof (localStorage.getItem("set_lng")) == "undefined" || localStorage.getItem("set_lng") == "" || localStorage.getItem("set_lng") == null) {
+      this.translate.use('en');
+    } else {
+      this.translate.use(localStorage.getItem("set_lng"));
+    }
   }
 
 

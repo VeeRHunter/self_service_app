@@ -15,7 +15,7 @@
     <ion-col col-8>
       <ion-row class="full_height">
         <span class="header_span">
-          Sign Up
+          {{ 'sign_up' | translate }}
         </span>
       </ion-row>
     </ion-col>
@@ -32,24 +32,24 @@
   <form #comProfileForm="ngForm" id="comProfileForm" (ngSubmit)="completeAddCompany(comProfileForm)" novalidate>
     <ion-row class="username_row">
       <mat-form-field class="example-full-width">
-        <input matInput type="text" placeholder="Username" [(ngModel)]="user_Data.username" required name="username">
+        <input matInput type="text" placeholder="{{ 'username' | translate }}" [(ngModel)]="user_Data.username" required name="username">
         <mat-error>
-          Username is required
+          {{ 'username_is_required' | translate }}
         </mat-error>
       </mat-form-field>
     </ion-row>
 
     <ion-row class="password_row">
       <mat-form-field class="example-full-width">
-        <input matInput type="email" placeholder="Email" [formControl]="emailFormControl" [(ngModel)]="user_Data.email" required
-          name="username">
+        <input matInput type="email" placeholder="{{ 'email' | translate }}" [formControl]="emailFormControl" [(ngModel)]="user_Data.email"
+          required name="username">
 
         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-          Please enter a valid email address
+          {{ 'valid_email_address' | translate }}
         </mat-error>
 
         <mat-error *ngIf="emailFormControl.hasError('required')">
-          Email is required
+          {{ 'email_is_required' | translate }}
         </mat-error>
 
       </mat-form-field>
@@ -57,11 +57,11 @@
 
     <ion-row class="password_row">
       <mat-form-field class="example-full-width">
-        <input matInput type="number" [(ngModel)]="user_Data.phone" [formControl]="phoneFormControl" required placeholder="Phone Number"
+        <input matInput type="number" [(ngModel)]="user_Data.phone" [formControl]="phoneFormControl" required placeholder="{{ 'phone_number' | translate }}"
           name="password" />
 
         <mat-error *ngIf="phoneFormControl.hasError('required')">
-          <span>Phone Number is required</span>
+          <span>{{ 'phone_number_is_required' | translate }}</span>
         </mat-error>
 
       </mat-form-field>
@@ -69,10 +69,11 @@
 
     <ion-row class="password_row">
       <mat-form-field class="example-full-width">
-        <input matInput type="password" [(ngModel)]="user_Data.password" required placeholder="Password" name="password" />
+        <input matInput type="password" [(ngModel)]="user_Data.password" required placeholder="{{ 'password' | translate }}" name="password"
+        />
 
         <mat-error>
-          <span>Password is required</span>
+          <span>{{ 'password_is_required' | translate }}</span>
         </mat-error>
 
       </mat-form-field>
@@ -80,10 +81,10 @@
 
     <ion-row class="password_row">
       <mat-form-field class="example-full-width">
-        <input matInput type="text" [(ngModel)]="user_Data.address" required placeholder="Address" name="address" />
+        <input matInput type="text" [(ngModel)]="user_Data.address" required placeholder="{{ 'address' | translate }}" name="address" />
 
         <mat-error>
-          <span>Address is required</span>
+          <span>{{ 'address_is_required' | translate }}</span>
         </mat-error>
 
       </mat-form-field>
@@ -91,16 +92,16 @@
 
     <ion-row class="login_row">
       <button mat-mini-fab class="button_class">
-        SignUp
+        {{ 'signup' | translate }}
       </button>
     </ion-row>
   </form>
 
   <ion-row class="signup_row">
     <span class="sign_up_span">
-      Already have an account?
+      {{ 'already_have' | translate }}?
       <span class="sign_up_page" (click)="goto_signin()">
-        &nbsp;Sign In
+        &nbsp;{{ 'sign_in' | translate }}
       </span>
     </span>
   </ion-row>

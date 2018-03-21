@@ -67,4 +67,17 @@ page-settings {
         font-size: 17px;
     }
 
+    .select_class{
+        width: 100%;
+        max-width: 100%;
+        border-bottom: 1px solid #ddd;
+        font-size: 1.6rem;
+    }
+    .mat-select-trigger{
+        margin-top: 10px;   
+    }
+    .sel_lng{
+        padding-left: 10px;
+    }
+
 }

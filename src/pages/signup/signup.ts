@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ToastController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController, LoadingController, MenuController } from 'ionic-angular';
 import { FormControl, Validators } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { SigninPage } from '../signin/signin';
 import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
+
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Generated class for the SignupPage page.
@@ -19,7 +21,7 @@ import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
 })
 export class SignupPage {
 
-  public user_Data = { "username": "", "password": "", "email": "", "phone": "", "address":"", "status": "" };
+  public user_Data = { "username": "", "password": "", "email": "", "phone": "", "address": "", "status": "" };
   public confirm_state: boolean;
 
   emailFormControl = new FormControl('', [
@@ -36,12 +38,13 @@ export class SignupPage {
   public send_data: any[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public toastCtrl: ToastController,
-    public apiprovider: ApiproviderProvider) {
+    public apiprovider: ApiproviderProvider, public translate: TranslateService, public menu: MenuController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
     this.confirm_state = true;
+    this.ionicInit();
   }
 
   completeAddCompany(comProfileForm) {
@@ -79,6 +82,16 @@ export class SignupPage {
   }
   goto_signin() {
     this.navCtrl.pop();
+  }
+
+  ionicInit() {
+    this.menu.swipeEnable(false);
+    if (typeof (localStorage.getItem("set_lng")) == "undefined" || localStorage.getItem("set_lng") == "" || localStorage.getItem("set_lng") == null) {
+      this.translate.setDefaultLang('en');
+    } else {
+      this.translate.use(localStorage.getItem("set_lng"));
+    }
+    console.log(localStorage.getItem("set_lng"));
   }
 
 }

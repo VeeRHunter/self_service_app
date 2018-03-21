@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { FormControl, Validators } from '@angular/forms';
+import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
+
+
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Generated class for the ChangeStatusPage page.
@@ -24,11 +28,13 @@ export class ChangeStatusPage {
 
   changeDate = new FormControl('', [Validators.required]);
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public toastCtrl: ToastController,
+    public apiprovider: ApiproviderProvider, public translate: TranslateService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChangeStatusPage');
+    this.ionicInit();
   }
 
   goback() {
@@ -38,6 +44,15 @@ export class ChangeStatusPage {
   completeAddCompany(comProfileForm) {
     if (comProfileForm.valid){
 
+    }
+  }
+
+  ionicInit() {
+    console.log(localStorage.getItem("set_lng"));
+    if (typeof (localStorage.getItem("set_lng")) == "undefined" || localStorage.getItem("set_lng") == "" || localStorage.getItem("set_lng") == null) {
+      this.translate.use('en');
+    } else {
+      this.translate.use(localStorage.getItem("set_lng"));
     }
   }
 

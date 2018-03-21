@@ -14,36 +14,36 @@
   <form #comProfileForm="ngForm" id="comProfileForm" (ngSubmit)="completeAddCompany(comProfileForm)" novalidate>
     <ion-row class="username_row">
       <mat-form-field class="example-full-width">
-        <input matInput type="text" placeholder="Username" [(ngModel)]="user_Data.username" required name="username">
+        <input matInput type="text" placeholder="{{ 'username' | translate }}" [(ngModel)]="user_Data.username" required name="username">
         <mat-error>
-          Username is required
+          {{ 'username_is_required' | translate }}
         </mat-error>
       </mat-form-field>
     </ion-row>
 
     <ion-row class="password_row">
       <mat-form-field class="example-full-width">
-        <input matInput type="password" #title="ngModel" id="password" [(ngModel)]="user_Data.password" required placeholder="Password"
+        <input matInput type="password" #title="ngModel" id="password" [(ngModel)]="user_Data.password" required placeholder="{{ 'password' | translate }}"
           i18n-placeholder="@@password" name="password" />
 
         <mat-error id="matLoginError2">
-          <span>Password is required</span>
+          <span>{{ 'password_is_required' | translate }}</span>
         </mat-error>
 
       </mat-form-field>
     </ion-row>
     <ion-row class="login_row">
       <button mat-mini-fab class="button_class">
-        Login
+        {{ 'login' | translate }}
       </button>
     </ion-row>
   </form>
 
   <ion-row class="signup_row">
     <span class="sign_up_span">
-      Not a member yet?
+      {{ 'not_a_member' | translate }}?
       <span class="sign_up_page" (click)="goto_signup()">
-        &nbsp;Create account
+        &nbsp;{{ 'create_account' | translate }}
       </span>
     </span>
   </ion-row>

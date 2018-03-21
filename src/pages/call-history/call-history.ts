@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
+
+import { TranslateService } from '@ngx-translate/core';
+
 
 /**
  * Generated class for the CallHistoryPage page.
@@ -24,14 +28,27 @@ export class CallHistoryPage {
     { "call_num": "23889373834", "date": "12, March, 2017 10:15 am", "duration": "15 seconds", "tariff": "Plan Z", "cost": "0.15" }
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public toastCtrl: ToastController,
+    public apiprovider: ApiproviderProvider, public translate: TranslateService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CallHistoryPage');
+    this.ionicInit();
   }
-  goback(){
+  goback() {
     this.navCtrl.pop();
+  }
+
+  ionicInit() {
+
+    console.log(localStorage.getItem("set_lng"));
+    if (typeof (localStorage.getItem("set_lng")) == "undefined" || localStorage.getItem("set_lng") == "" || localStorage.getItem("set_lng") == null) {
+      this.translate.use('en');
+    } else {
+      this.translate.use(localStorage.getItem("set_lng"));
+    }
+
   }
 
 }

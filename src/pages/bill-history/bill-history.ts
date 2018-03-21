@@ -5,6 +5,9 @@ import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file'
 
+import { TranslateService } from '@ngx-translate/core';
+
+
 /**
  * Generated class for the BillHistoryPage page.
  *
@@ -28,7 +31,8 @@ export class BillHistoryPage {
   public detail_Data = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController
-    , public toastCtrl: ToastController, public apiprovider: ApiproviderProvider, public transfer: FileTransfer, public file: File) {
+    , public toastCtrl: ToastController, public apiprovider: ApiproviderProvider, public transfer: FileTransfer, public file: File
+    , public translate: TranslateService) {
   }
 
   ionViewDidLoad() {
@@ -42,6 +46,13 @@ export class BillHistoryPage {
   }
 
   ionicInit() {
+
+    console.log(localStorage.getItem("set_lng"));
+    if (typeof (localStorage.getItem("set_lng")) == "undefined" || localStorage.getItem("set_lng") == "" || localStorage.getItem("set_lng") == null) {
+      this.translate.use('en');
+    } else {
+      this.translate.use(localStorage.getItem("set_lng"));
+    }
 
     this.user_Data.email = localStorage.getItem("user_email");
     this.detail_Data = Array();

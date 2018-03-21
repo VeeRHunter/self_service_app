@@ -15,7 +15,7 @@
     <ion-col col-8>
       <ion-row class="full_height">
         <span class="header_span">
-          SETTINGS
+          {{ 'settings' | translate }}
         </span>
       </ion-row>
     </ion-col>
@@ -33,8 +33,8 @@
       </ion-row>
     </ion-col>
     <ion-col col-10>
-      <ion-row class="full_height" (click)="goto_changePass()" >
-        <span class="change_password">Change Password</span>
+      <ion-row class="full_height" (click)="goto_changePass()">
+        <span class="change_password">{{ 'change_password' | translate }}</span>
       </ion-row>
     </ion-col>
   </ion-row>
@@ -47,7 +47,29 @@
     </ion-col>
     <ion-col col-10>
       <ion-row class="full_height">
-        <span class="change_password">Change Pin</span>
+        <span class="change_password">{{ 'change_pin' | translate }}</span>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class=" main_row">
+    <ion-col col-6>
+      <ion-row class="full_height">
+        <span class="change_password sel_lng">{{ 'select_language' | translate }}</span>
+      </ion-row>
+    </ion-col>
+    <ion-col col-6>
+      <ion-row class="full_height">
+        <mat-select [formControl]="selectFormControl" (change)="selected_lng()" [(ngModel)]="select_lng" class="select_class" required>
+          <mat-option value="en">
+            {{ 'english' | translate }}
+          </mat-option>
+
+          <mat-option value="ru">
+            {{ 'russian' | translate }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="selectFormControl.hasError('required')">{{ 'choose_type_of_payment' | translate }}</mat-error>
       </ion-row>
     </ion-col>
   </ion-row>

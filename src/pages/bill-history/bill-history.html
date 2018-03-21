@@ -15,7 +15,7 @@
     <ion-col col-8>
       <ion-row class="full_height">
         <span class="header_span">
-          Bill History
+          {{ 'bill_history' | translate }}
         </span>
       </ion-row>
     </ion-col>
@@ -31,7 +31,7 @@
       <ion-col col-6 class="left_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Bill Number
+            {{ 'bill_number' | translate }}
           </span>
           <span class="detail_span">
             {{list.bill_num}}
@@ -42,7 +42,7 @@
       <ion-col col-6 class="right_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Due Date
+            {{ 'due_date' | translate }}
           </span>
           <span class="detail_span">
             {{list.due_date}}
@@ -55,7 +55,7 @@
       <ion-col col-6 class="left_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Amount Owing
+            {{ 'amount_owing' | translate }}
           </span>
           <span class="detail_span">
             {{list.amount_owin}}
@@ -75,7 +75,7 @@
               <ion-col col-9>
                 <ion-row class="full_height">
                   <span class="button_span_name" (click)="download(i)">
-                    Download
+                    {{ 'download' | translate }}
                   </span>
                 </ion-row>
               </ion-col>

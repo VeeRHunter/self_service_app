@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {FormControl, Validators} from '@angular/forms';
+
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
+import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
+
+
+import { TranslateService } from '@ngx-translate/core';
+
+import { FormControl, Validators } from '@angular/forms';
 
 /**
  * Generated class for the PayNowPage page.
@@ -20,14 +26,26 @@ export class PayNowPage {
 
   public pay_Data = { "name": "", "method": "", "cardnum": "", "exm": "none", "exy": "2018" };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public toastCtrl: ToastController,
+    public apiprovider: ApiproviderProvider, public translate: TranslateService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PayNowPage');
+    this.ionicInit();
   }
+
   goback() {
     this.navCtrl.pop();
+  }
+
+  ionicInit() {
+    console.log(localStorage.getItem("set_lng"));
+    if (typeof (localStorage.getItem("set_lng")) == "undefined" || localStorage.getItem("set_lng") == "" || localStorage.getItem("set_lng") == null) {
+      this.translate.use('en');
+    } else {
+      this.translate.use(localStorage.getItem("set_lng"));
+    }
   }
 
 }

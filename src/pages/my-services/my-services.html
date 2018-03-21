@@ -15,7 +15,7 @@
     <ion-col col-8>
       <ion-row class="full_height">
         <span class="header_span">
-          MY SERVICE
+          {{ 'my_service' | translate }}
         </span>
       </ion-row>
     </ion-col>
@@ -31,7 +31,7 @@
       <ion-col col-3 class="left_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Type
+            {{ 'type' | translate }}
           </span>
           <span class="detail_span">
             {{list.type}}
@@ -41,7 +41,7 @@
       <ion-col col-4 class="center_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Number
+            {{ 'number' | translate }}
           </span>
           <span class="detail_span">
             {{list.number}}
@@ -51,7 +51,7 @@
       <ion-col col-5 class="right_col">
         <ion-row class="full_height">
           <span class="name_span">
-            Due Date
+            {{ 'due_date' | translate }}
           </span>
           <span class="detail_span">
             {{list.date}}
@@ -63,7 +63,7 @@
       <ion-col col-3>
         <ion-row class="full_height">
           <span class="name_span">
-            Status
+            {{ 'status' | translate }}
           </span>
           <span class="detail_span">
             {{list.status}}
@@ -75,7 +75,7 @@
       <ion-col col-5 class="right_col">
         <ion-row class="full_height">
           <button ion-button class="mat-button change_button">
-            CHANGE
+            {{ 'change_UP' | translate }}
           </button>
         </ion-row>
       </ion-col>
@@ -84,7 +84,7 @@
       <ion-col col-3>
         <ion-row class="full_height">
           <span class="name_span">
-            Plan
+            {{ 'plan' | translate }}
           </span>
           <span class="detail_span">
             {{list.plan}}
@@ -96,7 +96,7 @@
       <ion-col col-5 class="right_col">
         <ion-row class="full_height">
           <button ion-button class="mat-button change_button">
-            CHANGE
+            {{ 'change_UP' | translate }}
           </button>
         </ion-row>
       </ion-col>
@@ -105,7 +105,7 @@
       <img src="assets/imgs/device_back.png" class="service_back_style" />
       <ion-row class="image_button_row">
         <ion-col col-3>
-          <ion-row class="full_height" (click)="goto_callHistory()" >
+          <ion-row class="full_height" (click)="goto_callHistory()">
           </ion-row>
         </ion-col>
         <ion-col col-3>
