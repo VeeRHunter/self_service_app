@@ -46,9 +46,6 @@ export class SettingsPage {
 
   ionicInit() {
 
-    this.createUser();
-    // this.menuCtrl.swipeEnable(false);
-
     if (typeof (localStorage.getItem("set_lng")) == "undefined" || localStorage.getItem("set_lng") == "" || localStorage.getItem("set_lng") == null) {
       this.select_lng = "en";
       this.translate.setDefaultLang("en");
@@ -57,12 +54,13 @@ export class SettingsPage {
       this.translate.use(localStorage.getItem("set_lng"));
     }
     console.log(this.select_lng);
+    
   }
 
   selected_lng() {
     console.log(this.select_lng);
     localStorage.setItem("set_lng", this.select_lng);
-    this.events.publish('user:login');
+    this.createUser("This is fake");
     this.ionicInit();
   }
 
@@ -76,9 +74,9 @@ export class SettingsPage {
     // this.menuCtrl.();
   }
 
-  createUser() {
-    console.log('User created!');
-    this.events.publish('user:login');
+  createUser(user) {
+    console.log('User created!')
+    this.events.publish('user:created', user, Date.now());
   }
 
   ngAfterViewInit() {

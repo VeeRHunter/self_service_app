@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, Events } from 'ionic-angular';
+import { Platform, Nav, Events, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -41,10 +41,12 @@ export class MyApp {
   bottom_pages: Array<{ title: string, component: any, image: string }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen
-    , public translate: TranslateService, public events: Events) {
+    , public translate: TranslateService, public events: Events, public menuCtrl: MenuController) {
 
-    events.subscribe('user:created', () => {
-      this.check_again();
+    events.subscribe('user:created', (user, time) => {
+
+      this.ionicInit();
+      console.log('Welcome', user, 'at', time);
     });
 
     this.ionicInit();
@@ -60,18 +62,23 @@ export class MyApp {
   }
 
   openPage(page) {
-    this.translate.get('logout').subscribe(
-      value => {
+    if (page.title == 'asdfasdf') {
+      console.log(page);
+      alert("click");
+    } else {
+      this.translate.get('logout').subscribe(
+        value => {
 
-        if (page.title == value) {
-          localStorage.setItem("user_email", "");
-          this.nav.setRoot(SigninPage);
-        } else {
-          this.nav.push(page.component);
+          if (page.title == value) {
+            localStorage.setItem("user_email", "");
+            this.nav.setRoot(SigninPage);
+          } else {
+            this.nav.push(page.component);
+          }
+
         }
-
-      }
-    );
+      );
+    }
   }
 
   ionicInit() {
@@ -89,10 +96,6 @@ export class MyApp {
       { title: 'logout', component: null, image: "log_out" },
     ];
 
-    for (let list of this.pages) {
-      console.log(list.title);
-    }
-
     this.translate.addLangs(['en', 'ru']);
     this.translate.setDefaultLang(localStorage.getItem('set_lng') != null ? localStorage.getItem('set_lng') : "en");
     this.translate.use(localStorage.getItem('set_lng') != null ? localStorage.getItem('set_lng') : "en");
@@ -101,7 +104,6 @@ export class MyApp {
       this.translate.get(list.title).subscribe(
         value => {
           list.title = value;
-          console.log(list.title);
         }
       );
     }
@@ -113,12 +115,7 @@ export class MyApp {
         }
       );
     }
-  }
 
-  check_again() {
-    console.log("This is ioniViewDidLoad function in app.component.ts");
-    this.ionicInit();
-    // window.location.reload();
   }
 }
 
