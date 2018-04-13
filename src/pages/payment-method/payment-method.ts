@@ -37,10 +37,10 @@ export class PaymentMethodPage {
     console.log('ionViewDidLoad PaymentMethodPage');
     this.ionicInit();
   }
-  goback(){
+  goback() {
     this.navCtrl.pop();
   }
-  goto_newPayment(){
+  goto_newPayment() {
     this.navCtrl.push(NewPaymentPage);
   }
 
@@ -51,6 +51,10 @@ export class PaymentMethodPage {
     } else {
       this.translate.use(localStorage.getItem("set_lng"));
     }
+  }
+
+  deleteItem(index) {
+    this.detail_Data.splice(index, 1);
   }
 
 }

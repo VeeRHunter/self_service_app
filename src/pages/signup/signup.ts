@@ -49,7 +49,7 @@ export class SignupPage {
 
   completeAddCompany(comProfileForm) {
     if (comProfileForm.valid && this.emailFormControl.valid) {
-      // this.navCtrl.push(SigninPage);
+      this.navCtrl.push(SigninPage);
       let loading = this.loadingCtrl.create({
         content: "Please Wait..."
       });
