@@ -75,11 +75,11 @@ page-my-devices {
         margin-bottom: 3%;
     }
     .image_button_row{
-        position: absolute;
         height: 100%;
+        background-color: #3c82a3;
     }
     .image_button_row ion-col{
-        height: 100% !important;
+        // height: 100% !important;
     }
     .clear_button{
         margin-top: auto;
@@ -93,4 +93,22 @@ page-my-devices {
         position: relative;
     }
 
+    .service_iconRow{
+        // height: 30px;
+    }
+    .serviceDetail_icon{
+        padding-top: 15px;
+        margin: auto;
+        color: white;
+    }
+    .servicespan_rpw{
+        // height: 30px;
+        margin-top: 8px;
+    }
+    .serviceDetail_span{
+        margin: auto;
+        color: white;
+        text-align: center;
+        padding-bottom: 15px;
+    }
 }

@@ -75,8 +75,9 @@ page-my-services {
         margin-bottom: 3%;
     }
     .image_button_row{
-        position: absolute;
+        // position: absolute;
         height: 100%;
+        background-color: #3c82a3;
     }
     .image_button_row ion-col{
         height: 100% !important;
@@ -91,6 +92,24 @@ page-my-services {
     }
     .bottom_image_row{
         position: relative;
+    }
+
+    .service_iconRow{
+        // height: 30px;
+    }
+    .serviceDetail_icon{
+        padding-top: 15px;
+        margin: auto;
+        color: white;
+    }
+    .servicespan_rpw{
+        // height: 30px;
+        margin-top: 8px;
+    }
+    .serviceDetail_span{
+        margin: auto;
+        color: white;
+        padding-bottom: 15px;
     }
 
 }
