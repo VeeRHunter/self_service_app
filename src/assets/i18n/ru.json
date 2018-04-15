@@ -107,5 +107,7 @@
     "debit_card": "Дебетовая карта",
     "transaction_number": "Номер транзакции",
     "receipt": "Поступление",
-    "precessing": "Обработка"
+    "precessing": "Обработка",
+    "state_required": "требуется состояние",
+    "plan_required": "Требуется план"
 }

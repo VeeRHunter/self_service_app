@@ -21,6 +21,15 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class TransactionHistoryPage {
 
+  public transactionList = [
+    { "tran_num": "3014657", "type": "receipt", "date": "12 / 18", "amount": "0.01", "status": "precessing" },
+    { "tran_num": "5275851", "type": "receipt", "date": "12 / 18", "amount": "0.01", "status": "precessing" },
+    { "tran_num": "8548948", "type": "receipt", "date": "02 / 18", "amount": "0.01", "status": "precessing" },
+    { "tran_num": "3879948", "type": "receipt", "date": "01 / 19", "amount": "0.01", "status": "precessing" },
+    { "tran_num": "2438789", "type": "receipt", "date": "07 / 19", "amount": "0.01", "status": "precessing" },
+    { "tran_num": "3878978", "type": "receipt", "date": "06 / 19", "amount": "0.01", "status": "precessing" }
+  ];
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public toastCtrl: ToastController,
     public apiprovider: ApiproviderProvider, public translate: TranslateService) {
   }
@@ -29,7 +38,7 @@ export class TransactionHistoryPage {
     console.log('ionViewDidLoad TransactionHistoryPage');
     this.ionicInit();
   }
-  goback(){
+  goback() {
     this.navCtrl.pop();
   }
 

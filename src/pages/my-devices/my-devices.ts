@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, LoadingController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { TransactionHistoryPage } from '../transaction-history/transaction-history';
 import { TopupHistoryPage } from '../topup-history/topup-history';
 import { ServiceDetailPage } from '../service-detail/service-detail';
@@ -25,10 +25,10 @@ import { TranslateService } from '@ngx-translate/core';
 export class MyDevicesPage {
 
   public device_Data = [
-    { "type": "GSM", "device_id": "041523", "date": "12, March 2017", "status": "Open", "plan": "Saver1" },
-    { "type": "GSM", "device_id": "041523", "date": "12, March 2017", "status": "Open", "plan": "Saver1" },
-    { "type": "GSM", "device_id": "041523", "date": "12, March 2017", "status": "Open", "plan": "Saver1" },
-    { "type": "GSM", "device_id": "041523", "date": "12, March 2017", "status": "Open", "plan": "Saver1" }
+    { "type": "GSM", "device_id": "041523", "date": "12, March 2017", "status": "Open", "plan": "Saver1", "change_state": false, "change_plan": false },
+    { "type": "GSM", "device_id": "245678", "date": "12, March 2017", "status": "Open", "plan": "Saver1", "change_state": false, "change_plan": false },
+    { "type": "GSM", "device_id": "875482", "date": "12, March 2017", "status": "Open", "plan": "Saver1", "change_state": false, "change_plan": false },
+    { "type": "GSM", "device_id": "685683", "date": "12, March 2017", "status": "Open", "plan": "Saver1", "change_state": false, "change_plan": false }
   ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public toastCtrl: ToastController,
@@ -48,11 +48,11 @@ export class MyDevicesPage {
     this.navCtrl.push(TopupHistoryPage);
   }
 
-  goto_serviceDetail(){
+  goto_serviceDetail() {
     this.navCtrl.push(ServiceDetailPage);
   }
 
-  goto_serviceBundle(){
+  goto_serviceBundle() {
     this.navCtrl.push(ServiceBundlePage);
   }
 
@@ -63,6 +63,20 @@ export class MyDevicesPage {
     } else {
       this.translate.use(localStorage.getItem("set_lng"));
     }
+  }
+
+  change_state(index) {
+    for (let list of this.device_Data) {
+      list.change_state = false;
+    }
+    this.device_Data[index].change_state = true;
+  }
+
+  change_plan(index) {
+    for (let list of this.device_Data) {
+      list.change_plan = false;
+    }
+    this.device_Data[index].change_plan = true;
   }
 
 }

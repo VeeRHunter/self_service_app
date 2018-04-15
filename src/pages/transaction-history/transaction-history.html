@@ -28,7 +28,7 @@
 <ion-content padding class="bill_content">
 
 
-  <ion-row class="main_row">
+  <ion-row [ngClass]="{'main_row': i == 0, 'other_row': i != 0}" *ngFor="let list of transactionList; let i =  index;">
     <ion-row class="first_row">
       <ion-col col-6 class="left_col">
         <ion-row class="full_height">
@@ -36,7 +36,7 @@
             {{ 'transaction_number' | translate }}
           </span>
           <span class="detail_span">
-            3010389
+            {{list.tran_num}}
           </span>
         </ion-row>
       </ion-col>
@@ -47,7 +47,8 @@
             {{ 'type' | translate }}
           </span>
           <span class="receipt_span">
-            {{ 'receipt' | translate }}
+            {{ list.type | translate }}
+            <!-- {{list.type}} -->
           </span>
         </ion-row>
       </ion-col>
@@ -58,7 +59,7 @@
             {{ 'date' | translate }}
           </span>
           <span class="detail_span">
-            12/17
+            {{list.date}}
           </span>
         </ion-row>
       </ion-col>
@@ -71,7 +72,7 @@
             {{ 'amount' | translate }}
           </span>
           <span class="detail_span">
-            0.01
+            {{list.amount}}
           </span>
         </ion-row>
       </ion-col>
@@ -84,327 +85,8 @@
             {{ 'status' | translate }}
           </span>
           <span class="detail_span">
-            {{ 'precessing' | translate }}
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-
-  </ion-row>
-
-  <ion-row class="other_row">
-    <ion-row class="first_row">
-      <ion-col col-6 class="left_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'transaction_number' | translate }}
-          </span>
-          <span class="detail_span">
-            3010389
-          </span>
-        </ion-row>
-      </ion-col>
-
-      <ion-col col-3>
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'type' | translate }}
-          </span>
-          <span class="receipt_span">
-            {{ 'receipt' | translate }}
-          </span>
-        </ion-row>
-      </ion-col>
-
-      <ion-col col-3 class="right_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'date' | translate }}
-          </span>
-          <span class="detail_span">
-            12/17
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="bill_second_row">
-      <ion-col col-4 class="left_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'amount' | translate }}
-          </span>
-          <span class="detail_span">
-            0.01
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-4>
-      </ion-col>
-
-      <ion-col col-4 class="right_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'status' | translate }}
-          </span>
-          <span class="detail_span">
-            {{ 'precessing' | translate }}
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-
-  </ion-row>
-
-  <ion-row class="other_row">
-    <ion-row class="first_row">
-      <ion-col col-6 class="left_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'transaction_number' | translate }}
-          </span>
-          <span class="detail_span">
-            3010389
-          </span>
-        </ion-row>
-      </ion-col>
-
-      <ion-col col-3>
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'type' | translate }}
-          </span>
-          <span class="receipt_span">
-            {{ 'receipt' | translate }}
-          </span>
-        </ion-row>
-      </ion-col>
-
-      <ion-col col-3 class="right_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'date' | translate }}
-          </span>
-          <span class="detail_span">
-            12/17
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="bill_second_row">
-      <ion-col col-4 class="left_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'amount' | translate }}
-          </span>
-          <span class="detail_span">
-            0.01
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-4>
-      </ion-col>
-
-      <ion-col col-4 class="right_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'status' | translate }}
-          </span>
-          <span class="detail_span">
-            {{ 'precessing' | translate }}
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-
-  </ion-row>
-
-  <ion-row class="other_row">
-    <ion-row class="first_row">
-      <ion-col col-6 class="left_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'transaction_number' | translate }}
-          </span>
-          <span class="detail_span">
-            3010389
-          </span>
-        </ion-row>
-      </ion-col>
-
-      <ion-col col-3>
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'type' | translate }}
-          </span>
-          <span class="receipt_span">
-            {{ 'receipt' | translate }}
-          </span>
-        </ion-row>
-      </ion-col>
-
-      <ion-col col-3 class="right_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'date' | translate }}
-          </span>
-          <span class="detail_span">
-            12/17
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="bill_second_row">
-      <ion-col col-4 class="left_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'amount' | translate }}
-          </span>
-          <span class="detail_span">
-            0.01
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-4>
-      </ion-col>
-
-      <ion-col col-4 class="right_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'status' | translate }}
-          </span>
-          <span class="detail_span">
-            {{ 'precessing' | translate }}
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-
-  </ion-row>
-
-  <ion-row class="other_row">
-    <ion-row class="first_row">
-      <ion-col col-6 class="left_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'transaction_number' | translate }}
-          </span>
-          <span class="detail_span">
-            3010389
-          </span>
-        </ion-row>
-      </ion-col>
-
-      <ion-col col-3>
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'type' | translate }}
-          </span>
-          <span class="receipt_span">
-            {{ 'receipt' | translate }}
-          </span>
-        </ion-row>
-      </ion-col>
-
-      <ion-col col-3 class="right_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'date' | translate }}
-          </span>
-          <span class="detail_span">
-            12/17
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="bill_second_row">
-      <ion-col col-4 class="left_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'amount' | translate }}
-          </span>
-          <span class="detail_span">
-            0.01
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-4>
-      </ion-col>
-
-      <ion-col col-4 class="right_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'status' | translate }}
-          </span>
-          <span class="detail_span">
-            {{ 'precessing' | translate }}
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-
-  </ion-row>
-
-  <ion-row class="other_row">
-    <ion-row class="first_row">
-      <ion-col col-6 class="left_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'transaction_number' | translate }}
-          </span>
-          <span class="detail_span">
-            3010389
-          </span>
-        </ion-row>
-      </ion-col>
-
-      <ion-col col-3>
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'type' | translate }}
-          </span>
-          <span class="receipt_span">
-            {{ 'receipt' | translate }}
-          </span>
-        </ion-row>
-      </ion-col>
-
-      <ion-col col-3 class="right_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'date' | translate }}
-          </span>
-          <span class="detail_span">
-            12/17
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="bill_second_row">
-      <ion-col col-4 class="left_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'amount' | translate }}
-          </span>
-          <span class="detail_span">
-            0.01
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-4>
-      </ion-col>
-
-      <ion-col col-4 class="right_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            {{ 'status' | translate }}
-          </span>
-          <span class="detail_span">
-            {{ 'precessing' | translate }}
+            {{ list.status | translate }}
+            <!-- {{list.status}} -->
           </span>
         </ion-row>
       </ion-col>

@@ -65,16 +65,22 @@
           <span class="name_span">
             {{ 'status' | translate }}
           </span>
-          <span class="detail_span">
+          <span class="detail_span" *ngIf="!list.change_state">
             {{list.status}}
           </span>
+          <mat-form-field class="example-full-width" *ngIf="list.change_state">
+            <input matInput type="text" #title="ngModel" id="state" [(ngModel)]="list.status" required name="state" />
+            <mat-error id="matLoginError2">
+              <span>{{ 'state_required' | translate }}</span>
+            </mat-error>
+          </mat-form-field>
         </ion-row>
       </ion-col>
       <ion-col col-4>
       </ion-col>
       <ion-col col-5 class="right_col">
         <ion-row class="full_height">
-          <button ion-button class="mat-button change_button">
+          <button ion-button class="mat-button change_button" (click)="change_state(i)">
             {{ 'change_UP' | translate }}
           </button>
         </ion-row>
@@ -95,7 +101,7 @@
       </ion-col>
       <ion-col col-5 class="right_col">
         <ion-row class="full_height">
-          <button ion-button class="mat-button change_button">
+          <button ion-button class="mat-button change_button" (click)="change_plan(i)">
             {{ 'change_UP' | translate }}
           </button>
         </ion-row>

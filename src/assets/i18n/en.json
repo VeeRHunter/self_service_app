@@ -107,5 +107,7 @@
     "debit_card": "Debit Card",
     "transaction_number": "Transaction Number",
     "receipt": "Receipt",
-    "precessing": "Processing"
+    "precessing": "Processing",
+    "state_required":"State is required",
+    "plan_required":"Plan is required"
 }
