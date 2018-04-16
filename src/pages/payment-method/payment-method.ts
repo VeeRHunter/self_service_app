@@ -25,8 +25,8 @@ export class PaymentMethodPage {
 
 
   public detail_Data = [
-    { "name": "katie hazel", "type": "visa", "number": "4164xxxxxxxx1680", "expiry": "30/17", "status": "Open" },
-    { "name": "Gorden Gielis", "type": "visa", "number": "4564xxxxxxxx7113", "expiry": "30/20", "status": "Open" }
+    { "name": "katie hazel", "type": "visa", "number": "4164xxxxxxxx1680", "expiry": "30/17", "status": "open" },
+    { "name": "Gorden Gielis", "type": "visa", "number": "4564xxxxxxxx7113", "expiry": "30/20", "status": "open" }
   ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public toastCtrl: ToastController,

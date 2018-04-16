@@ -24,11 +24,17 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class MyServicesPage {
 
+  // public service_Data = [
+  //   { "type": "GSM", "number": "04155188882", "date": "12, March 2017", "status": "Open", "plan": "Saver1" },
+  //   { "type": "GSM", "number": "04155188882", "date": "12, March 2017", "status": "Open", "plan": "Saver1" },
+  //   { "type": "GSM", "number": "04155188882", "date": "12, March 2017", "status": "Open", "plan": "Saver1" },
+  //   { "type": "GSM", "number": "04155188882", "date": "12, March 2017", "status": "Open", "plan": "Saver1" }
+  // ];
   public service_Data = [
-    { "type": "GSM", "number": "04155188882", "date": "12, March 2017", "status": "Open", "plan": "Saver1" },
-    { "type": "GSM", "number": "04155188882", "date": "12, March 2017", "status": "Open", "plan": "Saver1" },
-    { "type": "GSM", "number": "04155188882", "date": "12, March 2017", "status": "Open", "plan": "Saver1" },
-    { "type": "GSM", "number": "04155188882", "date": "12, March 2017", "status": "Open", "plan": "Saver1" }
+    { "type": "GSM", "number": "04155188882", "date": "12, March 2017", "status": "open", "plan": "saver1", "change_state": false, "change_plan": false },
+    { "type": "GSM", "number": "04155188882", "date": "12, March 2017", "status": "open", "plan": "saver1", "change_state": false, "change_plan": false },
+    { "type": "GSM", "number": "04155188882", "date": "12, March 2017", "status": "open", "plan": "saver3", "change_state": false, "change_plan": false },
+    { "type": "GSM", "number": "04155188882", "date": "12, March 2017", "status": "open", "plan": "saver2", "change_state": false, "change_plan": false }
   ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public toastCtrl: ToastController,
@@ -63,6 +69,48 @@ export class MyServicesPage {
     } else {
       this.translate.use(localStorage.getItem("set_lng"));
     }
+  }
+
+  change_state(index) {
+
+    let temp_state = false;
+    for (let list of this.service_Data) {
+      if (list.change_state) {
+        temp_state = true;
+      }
+    }
+
+    if (!this.service_Data[index].change_state && !temp_state) {
+      for (let list of this.service_Data) {
+        list.change_state = false;
+      }
+      this.service_Data[index].change_state = true;
+    }
+  }
+
+  save_state(index) {
+    this.service_Data[index].change_state = false;
+  }
+
+  change_plan(index) {
+
+    let temp_state = false;
+    for (let list of this.service_Data) {
+      if (list.change_plan) {
+        temp_state = true;
+      }
+    }
+
+    if (!this.service_Data[index].change_plan && !temp_state) {
+      for (let list of this.service_Data) {
+        list.change_plan = false;
+      }
+      this.service_Data[index].change_plan = true;
+    }
+  }
+
+  save_plan(index) {
+    this.service_Data[index].change_plan = false;
   }
 
 }
