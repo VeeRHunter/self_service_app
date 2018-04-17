@@ -8,6 +8,7 @@ import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
 
 
 import { TranslateService } from '@ngx-translate/core';
+import { TopUpPage } from '../top-up/top-up';
 
 
 /**
@@ -45,7 +46,8 @@ export class MyDevicesPage {
   }
 
   goto_topupHistory() {
-    this.navCtrl.push(TopupHistoryPage);
+    // this.navCtrl.push(TopupHistoryPage);
+    this.navCtrl.push(TopUpPage);
   }
 
   goto_serviceDetail() {
@@ -82,7 +84,7 @@ export class MyDevicesPage {
     }
   }
 
-  save_state(index){
+  save_state(index) {
     this.device_Data[index].change_state = false;
   }
 

@@ -111,4 +111,10 @@
 
   </ion-row>
 
+  <ion-row class="more_button_Row" *ngIf="show_moreState">
+    <button ion-button class="more_button" (click)="add_moreAction()">
+      {{'more' | translate}}
+    </button>
+  </ion-row>
+
 </ion-content>

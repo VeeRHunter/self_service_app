@@ -7,6 +7,7 @@ import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
 import { TranslateService } from '@ngx-translate/core';
 
 import { FormControl, Validators } from '@angular/forms';
+import { TopupHistoryPage } from '../topup-history/topup-history';
 
 /**
  * Generated class for the TopUpPage page.
@@ -43,7 +44,20 @@ export class TopUpPage {
 
   completeAddCompany(comProfileForm) {
     if (comProfileForm.valid && this.setMethod.valid && this.selType.valid && this.changeDate.valid) {
-      alert("asdfasdfas");
+      if (localStorage.getItem("new_topup") != null) {
+        let old_data = new Array();
+        for (let list of JSON.parse(localStorage.getItem("new_topup"))) {
+          old_data.push(list);
+        }
+        old_data.push(this.top_Data);
+        localStorage.setItem("new_topup", JSON.stringify(old_data));
+      } else {
+        let new_array = new Array();
+        new_array.push(this.top_Data);
+        localStorage.setItem("new_topup", JSON.stringify(new_array));
+      }
+
+      this.navCtrl.push(TopupHistoryPage);
     }
   }
 
@@ -51,8 +65,11 @@ export class TopUpPage {
     this.navCtrl.pop();
   }
 
-  add_new(){
+  add_new() {
     console.log("asdfasd");
+    this.top_Data.topup = "";
+    this.top_Data.start_date = "";
+    this.top_Data.method = "";
   }
 
   ionicInit() {

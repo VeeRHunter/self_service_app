@@ -89,4 +89,12 @@ page-top-up {
         height: 2rem !important;
     }
 
+    .topup_calender .mat-input-flex.mat-form-field-flex{
+        border-bottom: 1px solid #ddd;
+    }
+
+    .mat-form-field-infix{
+        border: unset !important;
+    }
+
 }
