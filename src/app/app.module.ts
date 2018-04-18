@@ -50,6 +50,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule, Http } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { PaynowCheckPage } from '../pages/paynow-check/paynow-check';
+import { NewpaymentCheckPage } from '../pages/newpayment-check/newpayment-check';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -80,6 +82,8 @@ export function createTranslateLoader(http: HttpClient) {
     TopupHistoryPage,
     TransactionHistoryPage,
     ChangePasswordPage,
+    PaynowCheckPage,
+    NewpaymentCheckPage,
   ],
   imports: [
     BrowserModule,
@@ -120,6 +124,8 @@ export function createTranslateLoader(http: HttpClient) {
     TopupHistoryPage,
     TransactionHistoryPage,
     ChangePasswordPage,
+    PaynowCheckPage,
+    NewpaymentCheckPage,
   ],
   providers: [
     StatusBar,

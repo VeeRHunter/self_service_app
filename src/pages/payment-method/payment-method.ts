@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController, AlertController, ModalController } from 'ionic-angular';
 import { ApiproviderProvider } from '../../providers/apiprovider/apiprovider';
 
 
@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 
 import { NewPaymentPage } from '../new-payment/new-payment';
+import { NewpaymentCheckPage } from '../newpayment-check/newpayment-check';
 
 /**
  * Generated class for the PaymentMethodPage page.
@@ -30,7 +31,7 @@ export class PaymentMethodPage {
   ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public toastCtrl: ToastController,
-    public apiprovider: ApiproviderProvider, public translate: TranslateService) {
+    public apiprovider: ApiproviderProvider, public translate: TranslateService, public alertCtrl: AlertController, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -41,7 +42,14 @@ export class PaymentMethodPage {
     this.navCtrl.pop();
   }
   goto_newPayment() {
-    this.navCtrl.push(NewPaymentPage);
+    let profileModal = this.modalCtrl.create(NewpaymentCheckPage);
+    profileModal.onDidDismiss(data => {
+      console.log(data);
+      if (data == "open") {
+        this.navCtrl.push(NewPaymentPage);
+      }
+    });
+    profileModal.present();
   }
 
   ionicInit() {

@@ -26,7 +26,7 @@
 
 <ion-content padding class="bill_content">
 
-  <ion-row class="main_row" *ngFor="let list of call_historyData; let i = index" [ngClass]="{'main_row':i == 0, 'other_row': i != 0}">
+  <ion-row *ngFor="let list of call_historyData; let i = index" [ngClass]="{'main_row':i == 0, 'other_row': i != 0}">
     <ion-row class="first_row">
       <ion-col col-4 class="left_col">
         <ion-row class="full_height">
@@ -84,68 +84,6 @@
         </ion-row>
       </ion-col>
     </ion-row>
-
   </ion-row>
-
-  <!-- <ion-row class="other_row">
-    <ion-row class="first_row">
-      <ion-col col-4 class="left_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            Number Called
-          </span>
-          <span class="detail_span">
-            04155188882
-          </span>
-        </ion-row>
-      </ion-col>
-
-      <ion-col col-8 class="right_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            Date
-          </span>
-          <span class="receipt_span right_col">
-            12, March, 2017 10:15 am
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="bill_second_row">
-      <ion-col col-4 class="left_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            Duration
-          </span>
-          <span class="detail_span">
-            15 seconds
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-4>
-        <ion-row class="full_height">
-          <span class="name_span center_text">
-            Tariff
-          </span>
-          <span class="detail_span center_text">
-            Plan Z
-          </span>
-        </ion-row>
-      </ion-col>
-
-      <ion-col col-4 class="right_col">
-        <ion-row class="full_height">
-          <span class="name_span">
-            Cost
-          </span>
-          <span class="detail_span">
-            $0.15
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-
-  </ion-row> -->
 
 </ion-content>

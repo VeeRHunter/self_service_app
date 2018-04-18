@@ -54,7 +54,7 @@ export class SettingsPage {
       this.translate.use(localStorage.getItem("set_lng"));
     }
     console.log(this.select_lng);
-    
+
   }
 
   selected_lng() {
@@ -71,7 +71,6 @@ export class SettingsPage {
   }
 
   open_menu() {
-    // this.menuCtrl.();
   }
 
   createUser(user) {
